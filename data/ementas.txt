@@ -1,0 +1,7 @@
+
+
+2feira;01.01.2024;Pescada cozida com batatas;320;Bifes de peru grelhados;380;Peixe grelhado com legumes;250;Tofu com legumes;280
+3feira;02.01.2024;Bacalhau a Bras;400;Frango assado;350;Solha grelhada;280;Quiche de legumes;300
+4feira;03.01.2024;Salmao grelhado;350;Carne de porco a alentejana;450;Pescada cozida;260;Estufado de grao;290
+5feira;04.01.2024;Filetes de pescada;300;Bifes de vitela;420;Dourada grelhada;270;Hamburguer vegetariano;310
+6feira;05.01.2024;Carapau grelhado;280;Frango estufado;360;Peixe cozido;240;Lasanha vegetariana;330
