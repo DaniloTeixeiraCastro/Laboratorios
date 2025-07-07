@@ -60,10 +60,10 @@ void listarFuncionarios(NodeFunc* lista);
 NodeFunc* buscarFuncionario(NodeFunc* lista, int numero);
 
 /**
- * @brief Libera a memória alocada para a lista de funcionários
+ * @brief Liberta a memória alocada para a lista de funcionários
  * @param lista Ponteiro para o início da lista de funcionários
  */
-void liberarFuncionarios(NodeFunc* lista);
+void libertarFuncionarios(NodeFunc* lista);
 
 /**
  * @brief Salva a lista de funcionários em arquivo

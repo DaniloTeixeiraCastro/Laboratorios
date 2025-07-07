@@ -17,4 +17,5 @@
 6feira;0001;P
 6feira;0003;C
 6feira;0005;D
+6feira;0007;C
 6feira;0008;V

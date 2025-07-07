@@ -1,12 +1,235 @@
 /**
  * @file funcoes.c
  * @brief Implementação das funções do sistema de gestão do espaço social
- * @author [Seu Nome]
- * @date 2025-01-04
+ * @author [G36 - Epoca Especial]
+ * @date 2025-06-20
  */
 
 #include "estruturas.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
+#include <time.h>
+
+// Estado global do controle de refeições
+struct ControleRefeicao valorRefeicao = {5.00, "29.06.2025"};
+int refeicoes_servidas_por_dia = 0;
+char dia_atual[11] = "";
+
+// Variáveis globais para as listas
+NodeFunc* funcionarios = NULL;
+NodeEmenta* ementas = NULL;
+NodeEscolha* escolhas = NULL;
+
+/**
+ * @brief Atualiza a variável global das ementas
+ * @param nova_lista Nova lista de ementas
+ */
+void atualizarEmentas(NodeEmenta* nova_lista) {
+    // Libera memória da lista antiga se existir
+    if (ementas != NULL) {
+        NodeEmenta* atual = ementas;
+        while (atual != NULL) {
+            NodeEmenta* prox = atual->prox;
+            free(atual);
+            atual = prox;
+        }
+    }
+    ementas = nova_lista;
+}
+
+/**
+ * @brief Obtém a lista global de ementas
+ * @return Ponteiro para a lista de ementas
+ */
+NodeEmenta* obterEmentas() {
+    return ementas;
+}
+
+/**
+ * @brief Compara duas datas no formato DD.MM.AAAA
+ * @param data1 Primeira data
+ * @param data2 Segunda data
+ * @return 1 se data1 > data2, -1 se data1 < data2, 0 se são iguais
+ */
+int compararDatas(const char* data1, const char* data2) {
+    int dia1, mes1, ano1, dia2, mes2, ano2;
+    sscanf(data1, "%d.%d.%d", &dia1, &mes1, &ano1);
+    sscanf(data2, "%d.%d.%d", &dia2, &mes2, &ano2);
+    
+    if (ano1 > ano2) return 1;
+    if (ano1 < ano2) return -1;
+    if (mes1 > mes2) return 1;
+    if (mes1 < mes2) return -1;
+    if (dia1 > dia2) return 1;
+    if (dia1 < dia2) return -1;
+    return 0;
+}
+
+/**
+ * @brief Limpa o buffer do teclado
+ * @details Remove caracteres residuais do buffer de entrada
+ */
+void limparBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+/**
+ * @brief Pausa a execução do programa até que o usuário pressione Enter
+ * @details Exibe uma mensagem e aguarda input do usuário
+ */
+void pausar() {
+    printf("\nPressione Enter para continuar...");
+    limparBuffer();
+    system("cls");    
+}
+
+/**
+ * @brief Inicializa o controle de refeições
+ * @details Configura o valor inicial da refeição e reseta o contador diário
+ */
+void inicializarControleRefeicoes() {
+    // Valor inicial da refeição já está definido na estrutura
+    // Reseta o contador de refeições
+    refeicoes_servidas_por_dia = 0;
+    
+    // Obtém a data atual
+    time_t t = time(NULL);
+    struct tm *tm = localtime(&t);
+    sprintf(dia_atual, "%02d.%02d.%04d", tm->tm_mday, tm->tm_mon + 1, tm->tm_year + 1900);
+}
+
+/**
+ * @brief Valida se é possível servir mais uma refeição no dia
+ * @param dia Dia da semana para validação
+ * @return 1 se pode servir, 0 se não pode
+ */
+int validarRefeicaoDia(const char* dia) {
+    // Verifica se é um novo dia
+    if (strcmp(dia_atual, dia) != 0) {
+        // Nova data, reseta o contador
+        refeicoes_servidas_por_dia = 0;
+        strcpy(dia_atual, dia);
+    }
+    
+    // Verifica se já atingiu o limite
+    if (refeicoes_servidas_por_dia >= LIMITE_REFEICOES_DIARIO) {
+        printf("\nERRO: Limite diário de refeições atingido!\n");
+        printf("Máximo de %d refeições por dia.\n", LIMITE_REFEICOES_DIARIO);
+        return 0;
+    }
+    
+    // Incrementa o contador e retorna sucesso
+    refeicoes_servidas_por_dia++;
+    return 1;
+}
+
+// Estrutura para armazenar atualizações de valor
+struct AtualizacaoValor {
+    float valor;
+    char data_inicio[11];
+};
+
+// Array para armazenar as atualizações de valor
+#define MAX_ATUALIZACOES 10
+static struct AtualizacaoValor atualizacoes[MAX_ATUALIZACOES];
+static int num_atualizacoes = 0;
+
+/**
+ * @brief Atualiza o valor da refeição
+ * @param novo_valor Novo valor da refeição
+ */
+void atualizarValorRefeicao(float novo_valor) {
+    // Verifica se as ementas foram carregadas
+    if (ementas == NULL) {
+        printf("\nErro: Carregue as ementas primeiro (opcao 1.b)!\n");
+        return;
+    }
+    
+    // Pede a data de entrada em vigor do novo valor da refeição
+    char data_inicio[11];
+    printf("\nDigite a data de inicio que o novo valor entra em vigor (DD.MM.AAAA): ");
+    scanf("%10s", data_inicio);
+    limparBuffer();
+    
+    // Valida o formato da data
+    if (strlen(data_inicio) != 10 || data_inicio[2] != '.' || data_inicio[5] != '.') {
+        printf("\nErro: Formato de data invalido! Use DD.MM.AAAA\n");
+        return;
+    }
+    
+    // Valida se a data está dentro do período das ementas
+    NodeEmenta* ementa = ementas;
+    int data_valida = 0;
+    
+    while (ementa) {
+        if (compararDatas(data_inicio, ementa->ementa.data) == 0) {
+            data_valida = 1;
+            break;
+        }
+        ementa = ementa->prox;
+    }
+    
+    if (!data_valida) {
+        printf("\nErro: Data nao corresponde a nenhuma data de ementa!\n");
+        printf("Datas disponiveis: ");
+        ementa = ementas;
+        while (ementa) {
+            printf("%s ", ementa->ementa.data);
+            ementa = ementa->prox;
+        }
+        printf("\n");
+        return;
+    }
+    
+    // Verifica se já atingiu o limite de atualizações
+    if (num_atualizacoes >= MAX_ATUALIZACOES) {
+        printf("\nErro: Limite maximo de atualizacoes atingido!\n");
+        return;
+    }
+    
+    // Verifica se já existe uma atualização para esta data
+    for (int i = 0; i < num_atualizacoes; i++) {
+        if (strcmp(data_inicio, atualizacoes[i].data_inicio) == 0) {
+            printf("\nErro: Ja existe uma atualizacao para esta data!\n");
+            return;
+        }
+    }
+    
+    // Atualiza o valor e armazena a nova atualização
+    atualizacoes[num_atualizacoes].valor = novo_valor;
+    strcpy(atualizacoes[num_atualizacoes].data_inicio, data_inicio);
+    
+    // Atualiza a data da última atualização para a data de início
+    strcpy(valorRefeicao.data_ultima_atualizacao, data_inicio);
+    
+    // Atualiza o valor atual da refeição
+    valorRefeicao.valor = novo_valor;
+    
+    num_atualizacoes++;
+    
+    printf("\nValor da refeicao atualizado com sucesso!\n");
+    
+    // Mostra o valor atual da refeição
+    printf("\n+--------------------------------------------------------------+\n");
+    printf("|                  Informacoes da Refeicao                     |\n");
+    printf("+--------------------------------------------------------------+\n");
+    printf("| Novo valor da refeicao: %.2f Euros\n", novo_valor);
+    printf("| Data de entrada em vigor: %s\n", data_inicio);
+    printf("+--------------------------------------------------------------+\n");
+}
+
+/**
+ * @brief Mostra o valor atual da refeição
+ */
+void mostrarValorRefeicao() {
+    printf("\nValor atual da refeicao: %.2f€\n", valorRefeicao.valor);
+    printf("Ultima atualizacao: %s\n", valorRefeicao.data_ultima_atualizacao);
+}
+
+
 
 /**
  * @brief Cria um novo nó para a lista de funcionários
@@ -299,28 +522,28 @@ NodeEscolha* carregarEscolhas(const char* filename) {
 }
 
 /**
- * @brief Libera toda a memória alocada para as listas
+ * @brief Liberta toda a memória alocada para as listas
  * @param funcionarios Ponteiro para a lista de funcionários
  * @param ementas Ponteiro para a lista de ementas
  * @param escolhas Ponteiro para a lista de escolhas
- * @details Percorre todas as listas liberando a memória alocada para cada nó
+ * @details Percorre todas as listas libertando a memória alocada para cada nó
  */
-void liberarMemoria(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha* escolhas) {
-    // Liberar lista de funcionarios
+void libertarMemoria(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha* escolhas) {
+    // Libertar lista de funcionarios
     while (funcionarios) {
         NodeFunc* temp = funcionarios;
         funcionarios = funcionarios->prox;
         free(temp);
     }
 
-    // Liberar lista de ementas
+    // Libertar lista de ementas
     while (ementas) {
         NodeEmenta* temp = ementas;
         ementas = ementas->prox;
         free(temp);
     }
 
-    // Liberar lista de escolhas
+    // Libertar lista de escolhas
     while (escolhas) {
         NodeEscolha* temp = escolhas;
         escolhas = escolhas->prox;
@@ -336,61 +559,139 @@ void liberarMemoria(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha* es
  * @param dia Dia para listar as refeições
  * @details Mostra as escolhas de refeições feitas pelos funcionários em um determinado dia
  */
-void listarRefeicoesDia(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha* escolhas, const char* dia) {
-    printf("\n+========================================================+\n");
-    printf("|        Refeicoes para %-10s           |\n", dia);
-    printf("+========================================================+\n");
-    printf("| Func.  | Nome                 | Prato                  |\n");
-    printf("+--------+----------------------+------------------------+\n");
-
-    NodeEscolha* escolha = escolhas;
-    int total_refeicoes = 0;
-
-    while (escolha) {
-        if (strcmp(escolha->escolha.dia, dia) == 0) {
-            NodeFunc* func = funcionarios;
-            while (func) {
-                if (func->func.numero == escolha->escolha.num_funcionario) {
-                    NodeEmenta* ementa = ementas;
-                    while (ementa) {
-                        if (strcmp(ementa->ementa.dia, dia) == 0) {
-                            const char* nome_prato = 
-                                escolha->escolha.tipo_prato == 'C' ? 
-                                ementa->ementa.prato_carne.nome : 
-                                ementa->ementa.prato_peixe.nome;
-
-                            printf("| %-6d | %-20s | %-10s |\n", 
-                                func->func.numero,
-                                func->func.nome,
-                                nome_prato);
-                            total_refeicoes++;
-                            break;
-                        }
-                        ementa = ementa->prox;
-                    }
-                    break;
-                }
-                func = func->prox;
-            }
-        }
-        escolha = escolha->prox;
+ void listarRefeicoesDia(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha* escolhas, const char* dia) {
+    if (funcionarios == NULL || ementas == NULL || escolhas == NULL) {
+        printf("\nErro: Carregue todos os arquivos primeiro (a, b e c)!\n");
+        return;
     }
 
-    printf("+--------+----------------------+------------------------+\n");
-    printf("Total de refeicoes para %s: %d\n", dia, total_refeicoes);
-    printf("+========================================================+\n");
+    // Valida o limite de refeições
+    if (!validarRefeicaoDia(dia)) {
+        return;
+    }
+
+    // Encontra a ementa do dia
+    NodeEmenta* ementa_atual = ementas;
+    while (ementa_atual != NULL && strcmp(ementa_atual->ementa.dia, dia) != 0) {
+        ementa_atual = ementa_atual->prox;
+    }
+
+    if (ementa_atual == NULL) {
+        printf("\nDia não encontrado na ementa!\n");
+        return;
+    }
+
+    printf("Data: %s\n", ementa_atual->ementa.data);
+
+    printf("\nPratos disponiveis:\n");
+    printf("- Carne: %s (%d calorias)\n", ementa_atual->ementa.prato_carne.nome, ementa_atual->ementa.prato_carne.calorias);
+    printf("- Peixe: %s (%d calorias)\n", ementa_atual->ementa.prato_peixe.nome, ementa_atual->ementa.prato_peixe.calorias);
+    printf("- Dieta: %s (%d calorias)\n", ementa_atual->ementa.prato_dieta.nome, ementa_atual->ementa.prato_dieta.calorias);
+    printf("- Vegetariano: %s (%d calorias)\n", ementa_atual->ementa.prato_vegetariano.nome, ementa_atual->ementa.prato_vegetariano.calorias);
+
+    printf("\n+=============================================================+\n");
+    printf("|               Refeicoes requeridas para %s              |\n", dia);
+    printf("+=============================================================+\n");
+    printf("+--------+----------------------+-----------------------------+\n");
+    printf("| Func.  | Nome                 | Prato                       |\n");
+    printf("+--------+----------------------+-----------------------------+\n");
+
+    NodeEscolha* escolha_atual = escolhas;
+    int total_refeicoes = 0;
+    
+    while (escolha_atual != NULL) {
+        if (strcmp(escolha_atual->escolha.dia, dia) == 0) {
+            // Valida e conta a refeição
+            if (validarRefeicaoDia(dia)) {
+                NodeFunc* func_atual = funcionarios;
+                while (func_atual != NULL && func_atual->func.numero != escolha_atual->escolha.num_funcionario) {
+                    func_atual = func_atual->prox;
+                }
+                if (func_atual != NULL) {
+                    // Determina o nome do prato escolhido
+                    const char* nome_prato = "";
+                    switch (escolha_atual->escolha.tipo_prato) {
+                        case 'C':
+                            nome_prato = ementa_atual->ementa.prato_carne.nome;
+                            break;
+                        case 'P':
+                            nome_prato = ementa_atual->ementa.prato_peixe.nome;
+                            break;
+                        case 'D':
+                            nome_prato = ementa_atual->ementa.prato_dieta.nome;
+                            break;
+                        case 'V':
+                            nome_prato = ementa_atual->ementa.prato_vegetariano.nome;
+                            break;
+                        default:
+                            nome_prato = "Prato não especificado";
+                    }
+                    
+                    printf("| %-6d | %-20s | %-27s |\n", 
+                           func_atual->func.numero, 
+                           func_atual->func.nome, 
+                           nome_prato);                    total_refeicoes++;
+                }
+            }
+        }
+        escolha_atual = escolha_atual->prox;
+    }
+    // Mostra o número de refeições requeridas para o dia
+    printf("+--------+----------------------+-----------------------------+\n");
+    printf("\nTotal de refeicoes requeridas para %s: %d/%d\n", dia, total_refeicoes, LIMITE_REFEICOES_DIARIO);
+    printf("____________________________________________________\n");
 }
 
 /**
- * @brief Lista os utentes ordenados por número de refeições
+ * @brief Lista o consumo semanal de refeições, dos utentes ordenados por ordem decrescente,
  * @param funcionarios Lista de funcionários
+ * @param ementas Lista de ementas
  * @param escolhas Lista de escolhas
- * @details Ordena e exibe os funcionários com base no número de refeições escolhidas
+ * @details Ordena e exibe os utentes com base no número de refeições escolhidas
  */
-void listarUtentesOrdenados(NodeFunc* funcionarios, NodeEscolha* escolhas) {
-    printf("\n+---------------------------------------------------------------+\n");
-    printf("|           Resumo de Consumo por Utente                        |\n");
-    printf("+---------------------------------------------------------------+\n");
+void listarRefeicoesServidasSemana(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha* escolhas) {
+    // Variáveis para cálculo dos totais
+    int total_refeicoes = 0;
+    float total_despesa = 0;
+
+    // Mostra o valor atual da refeição
+    printf("\n+--------------------------------------------------------------+\n");
+    printf("|                  Informacoes da Refeicao                     |\n");
+    printf("+--------------------------------------------------------------+\n");
+    printf("| Valor atual da refeicao: %.2f Euros                          |\n", valorRefeicao.valor);
+    printf("| Ultima atualizacao: %s                               |\n", valorRefeicao.data_ultima_atualizacao);
+    printf("+--------------------------------------------------------------+\n");
+    
+    // Pergunta se deseja atualizar o valor
+    char resposta;
+    do {
+        printf("\nDeseja atualizar o valor da refeicao? (S/N): ");
+        scanf(" %c", &resposta);
+        limparBuffer();
+        
+        if (resposta != 'S' && resposta != 's' && resposta != 'N' && resposta != 'n') {
+            printf("\nErro: Resposta invalida! Por favor, digite S para Sim ou N para Nao.\n");
+        }
+    } while (resposta != 'S' && resposta != 's' && resposta != 'N' && resposta != 'n');
+
+    if (resposta == 'S' || resposta == 's') {
+        float novo_valor;
+        printf("\nDigite o novo valor da refeicao: ");
+        scanf("%f", &novo_valor);
+        limparBuffer();
+        
+        if (novo_valor > 0) {
+            atualizarValorRefeicao(novo_valor);
+            pausar();
+        } else {
+            printf("\nErro: Valor deve ser maior que zero!\n");
+            pausar();
+        }
+    }
+
+    printf("\n+==============================================================+\n");
+    printf("|             Resumo semanal de Consumo por Utente             |\n");
+    printf("+==============================================================+\n");
 
     // Criar array para contar refeicoes por funcionario
     int max_func = 0;
@@ -414,51 +715,70 @@ void listarUtentesOrdenados(NodeFunc* funcionarios, NodeEscolha* escolhas) {
         escolha = escolha->prox;
     }
 
-    printf("+---------+-------------------------+------------+---------------+\n");
-    printf("| Func.   | Nome                    | Refeicoes  | Despesa (Eur) |\n");
-    printf("+---------+-------------------------+------------+---------------+\n");
+    printf("+---------+-------------------------+------------+-------------+\n");
+    printf("| Func.   | Nome                    | Refeicoes  | Despesa (E) |\n");
+    printf("+---------+-------------------------+------------+-------------+\n");
 
     // Imprimir resultados
-    int total_refeicoes = 0;
-    float total_despesa = 0;
-    for (int i = 1; i <= max_func; i++) {
+    for (int i = max_func; i >= 1; i--) {
         if (contagem[i] > 0) {
             func = funcionarios;
             while (func) {
                 if (func->func.numero == i) {
-                    float despesa = contagem[i] * 5.0f;
+                    // Calcula a despesa total para este funcionário
+                    float despesa_total = 0;
+                    NodeEscolha* escolha_atual = escolhas;
+                    
+                    while (escolha_atual) {
+                        if (escolha_atual->escolha.num_funcionario == i) {
+                            NodeEmenta* ementa_atual = ementas;
+                            while (ementa_atual) {
+                                if (strcmp(escolha_atual->escolha.dia, ementa_atual->ementa.dia) == 0) {
+                                    // Encontra o valor correto para esta data
+                                    float valor_refeicao = 5.00; // Começa com o valor inicial
+                                    
+                                    // Procura a última atualização válida para esta data
+                                    for (int j = num_atualizacoes - 1; j >= 0; j--) {
+                                        if (compararDatas(ementa_atual->ementa.data, atualizacoes[j].data_inicio) >= 0) {
+                                            valor_refeicao = atualizacoes[j].valor;
+                                            break;
+                                        }
+                                    }
+                                    
+                                    despesa_total += valor_refeicao;
+                                    break;
+                                }
+                                ementa_atual = ementa_atual->prox;
+                            }
+                        }
+                        escolha_atual = escolha_atual->prox;
+                    }
+                    
                     printf("| %-7d | %-23s | %-10d | %-11.2f |\n",
                         func->func.numero,
                         func->func.nome,
                         contagem[i],
-                        despesa);
+                        despesa_total);
+                    
                     total_refeicoes += contagem[i];
-                    total_despesa += despesa;
+                    total_despesa += despesa_total;
                     break;
                 }
                 func = func->prox;
             }
         }
     }
-
-    printf("+---------+-------------------------+------------+---------------+\n");
-    printf("Total de refeicoes servidas na semana: %d\n", total_refeicoes);
+    
+    // Mostra o número total de refeições e despesa
+    printf("+---------+-------------------------+------------+-------------+\n");
+    printf("\nTotal de refeicoes servidas na semana: %d\n", total_refeicoes);
     printf("Total de despesa: %.2f Euros\n", total_despesa);
-    printf("+----------------------------------------------------------------+\n");
-
+    printf("____________________________________________________\n");
+    
+    // Libera a memória alocada
     free(contagem);
 }
 
-/**
- * @brief Lista as refeições e calorias consumidas por um utente
- * @param funcionarios Lista de funcionários
- * @param ementas Lista de ementas
- * @param escolhas Lista de escolhas
- * @param num_funcionario Número do funcionário
- * @param data_inicio Data inicial do período
- * @param data_fim Data final do período
- * @details Mostra todas as refeições escolhidas por um funcionário em um período específico
- */
 void listarRefeicoesCalorias(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha* escolhas, 
                             int num_funcionario, const char* data_inicio, const char* data_fim) {
     NodeFunc* func = funcionarios;
@@ -532,26 +852,42 @@ void calcularMediasCalorias(NodeEmenta* ementas, NodeEscolha* escolhas,
 
     NodeEmenta* ementa = ementas;
     while (ementa) {
-        int total_calorias = 0;
-        int num_refeicoes = 0;
+        // Verifica se a data está dentro do período especificado
+        if (compararDatas(ementa->ementa.data, data_inicio) >= 0 && 
+            compararDatas(ementa->ementa.data, data_fim) <= 0) {
+            
+            int total_calorias = 0;
+            int num_refeicoes = 0;
 
-        NodeEscolha* escolha = escolhas;
-        while (escolha) {
-            if (strcmp(escolha->escolha.dia, ementa->ementa.dia) == 0) {
-                if (escolha->escolha.tipo_prato == 'C')
-                    total_calorias += ementa->ementa.prato_carne.calorias;
-                else
-                    total_calorias += ementa->ementa.prato_peixe.calorias;
-                num_refeicoes++;
+            NodeEscolha* escolha = escolhas;
+            while (escolha) {
+                if (strcmp(escolha->escolha.dia, ementa->ementa.dia) == 0) {
+                    // Calcula as calorias baseado no tipo de prato escolhido
+                    switch(escolha->escolha.tipo_prato) {
+                        case 'C':
+                            total_calorias += ementa->ementa.prato_carne.calorias;
+                            break;
+                        case 'P':
+                            total_calorias += ementa->ementa.prato_peixe.calorias;
+                            break;
+                        case 'V':
+                            total_calorias += ementa->ementa.prato_vegetariano.calorias;
+                            break;
+                        case 'D':
+                            total_calorias += ementa->ementa.prato_dieta.calorias;
+                            break;
+                    }
+                    num_refeicoes++;
+                }
+                escolha = escolha->prox;
             }
-            escolha = escolha->prox;
-        }
 
-        if (num_refeicoes > 0) {
-            float media = (float)total_calorias / num_refeicoes;
-            printf("%-6s | %.2f\n", ementa->ementa.dia, media);
+            if (num_refeicoes > 0) {
+                // Calcula a média considerando apenas as refeições consumidas
+                float media = (float)total_calorias / num_refeicoes;
+                printf("%-6s | %.2f\n", ementa->ementa.dia, media);
+            }
         }
-
         ementa = ementa->prox;
     }
     printf("---------------------------\n");
@@ -588,21 +924,32 @@ void gerarTabelaSemanal(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha
         while (escolha) {
             if (escolha->escolha.num_funcionario == num_funcionario &&
                 strcmp(escolha->escolha.dia, ementa->ementa.dia) == 0) {
-                const char* nome_prato;
-                int calorias;
-
-                if (escolha->escolha.tipo_prato == 'C') {
-                    nome_prato = ementa->ementa.prato_carne.nome;
-                    calorias = ementa->ementa.prato_carne.calorias;
-                } else {
-                    nome_prato = ementa->ementa.prato_peixe.nome;
-                    calorias = ementa->ementa.prato_peixe.calorias;
+                switch(escolha->escolha.tipo_prato) {
+                    case 'C':
+                        printf("%-6s | %-20s | %d\n",
+                               ementa->ementa.dia,
+                               ementa->ementa.prato_carne.nome,
+                               ementa->ementa.prato_carne.calorias);
+                        break;
+                    case 'P':
+                        printf("%-6s | %-20s | %d\n",
+                               ementa->ementa.dia,
+                               ementa->ementa.prato_peixe.nome,
+                               ementa->ementa.prato_peixe.calorias);
+                        break;
+                    case 'V':
+                        printf("%-6s | %-20s | %d\n",
+                               ementa->ementa.dia,
+                               ementa->ementa.prato_vegetariano.nome,
+                               ementa->ementa.prato_vegetariano.calorias);
+                        break;
+                    case 'D':
+                        printf("%-6s | %-20s | %d\n",
+                               ementa->ementa.dia,
+                               ementa->ementa.prato_dieta.nome,
+                               ementa->ementa.prato_dieta.calorias);
+                        break;
                 }
-
-                printf("%-6s | %-20s | %d\n",
-                       ementa->ementa.dia,
-                       nome_prato,
-                       calorias);
                 break;
             }
             escolha = escolha->prox;
@@ -629,23 +976,25 @@ void gerarTabelaSemanalDetalhada(NodeFunc* funcionarios, NodeEmenta* ementas, No
         printf("Funcionario nao encontrado.\n");
         return;
     }
-    printf("\n=== Tabela Semanal Detalhada do Funcionario %d - %s ===\n", num_funcionario, func->func.nome);
-    printf("----------------------------------------------------------------------------------------------------------------------------\n");
-    printf("%-7s| %-18s| %-7s| %-18s| %-7s| %-18s| %-7s| %-18s| %-7s\n",
+    printf(" __________________________________________________________________________");
+    printf("\n *****  Tabela Semanal Detalhada do Funcionario %d - %s  ***** \n", num_funcionario, func->func.nome);
+    printf(" __________________________________________________________________________\n");
+    printf("\n+================================================================================================================================================+\n");
+    printf("| %-7s| %-24s| %5s | %-24s| %5s | %-24s| %5s | %-24s| %5s |\n",
         "Dia", "Peixe", "Cal.", "Carne", "Cal.", "Dieta", "Cal.", "Vegetariano", "Cal.");
-    printf("----------------------------------------------------------------------------------------------------------------------------\n");
+    printf("+================================================================================================================================================+\n");
     for (int i = 0; i < 5; i++) {
         NodeEmenta* ementa = ementas;
         while (ementa && stricmp(ementa->ementa.dia, dias_semana[i]) != 0)
             ementa = ementa->prox;
-        char peixe[50] = "", carne[50] = "", dieta[50] = "", vegetariano[50] = "";
-        int cal_peixe = 0, cal_carne = 0, cal_dieta = 0, cal_veg = 0;
+        char peixe[50] = "", carne[50] = "", dieta[50] = "", veget[50] = "";
+        int cal_peixe = 0, cal_carne = 0, cal_dieta = 0, cal_veget = 0;
         if (ementa) {
             NodeEscolha* escolha = escolhas;
-            int achou = 0;
-            while (escolha && !achou) {
-                if (escolha->escolha.num_funcionario == num_funcionario && stricmp(escolha->escolha.dia, dias_semana[i]) == 0) {
-                    switch (escolha->escolha.tipo_prato) {
+            while (escolha) {
+                if (escolha->escolha.num_funcionario == num_funcionario &&
+                    strcmp(escolha->escolha.dia, ementa->ementa.dia) == 0) {
+                    switch(escolha->escolha.tipo_prato) {
                         case 'P':
                             strncpy(peixe, ementa->ementa.prato_peixe.nome, sizeof(peixe)-1);
                             cal_peixe = ementa->ementa.prato_peixe.calorias;
@@ -659,24 +1008,24 @@ void gerarTabelaSemanalDetalhada(NodeFunc* funcionarios, NodeEmenta* ementas, No
                             cal_dieta = ementa->ementa.prato_dieta.calorias;
                             break;
                         case 'V':
-                            strncpy(vegetariano, ementa->ementa.prato_vegetariano.nome, sizeof(vegetariano)-1);
-                            cal_veg = ementa->ementa.prato_vegetariano.calorias;
+                            strncpy(veget, ementa->ementa.prato_vegetariano.nome, sizeof(veget)-1);
+                            cal_veget = ementa->ementa.prato_vegetariano.calorias;
                             break;
                     }
-                    achou = 1;
+                    break;
                 }
                 escolha = escolha->prox;
             }
         }
-        printf("%-7s| %-18s| %-7s| %-18s| %-7s| %-18s| %-7s| %-18s| %-7s\n",
+        printf("| %-7s| %-24s| %5d | %-24s| %5d | %-24s| %5d | %-24s| %5d |\n",
             dias_semana[i],
-            peixe, cal_peixe ? (char [12]){0} + sprintf((char [12]){0}, "%d", cal_peixe) : "",
-            carne, cal_carne ? (char [12]){0} + sprintf((char [12]){0}, "%d", cal_carne) : "",
-            dieta, cal_dieta ? (char [12]){0} + sprintf((char [12]){0}, "%d", cal_dieta) : "",
-            vegetariano, cal_veg ? (char [12]){0} + sprintf((char [12]){0}, "%d", cal_veg) : "");
+            peixe, cal_peixe > 0 ? cal_peixe : 0,
+            carne, cal_carne > 0 ? cal_carne : 0,
+            dieta, cal_dieta > 0 ? cal_dieta : 0,
+            veget, cal_veget > 0 ? cal_veget : 0);
+            printf("+------------------------------------------------------------------------------------------------------------------------------------------------+\n");
+        }
     }
-    printf("----------------------------------------------------------------------------------------------------------------------------\n");
-}
 
 // Função auxiliar para comparar strings ignorando maiúsculas/minúsculas
 int stricmp(const char* s1, const char* s2) {
