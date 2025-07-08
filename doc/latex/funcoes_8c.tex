@@ -1,0 +1,527 @@
+\doxysection{Referência ao ficheiro src/lib/funcoes.c}
+\hypertarget{funcoes_8c}{}\label{funcoes_8c}\index{src/lib/funcoes.c@{src/lib/funcoes.c}}
+
+
+Implementação das funções do sistema de gestão do espaço social.  
+
+
+{\ttfamily \#include "{}estruturas.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsubsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_atualizacao_valor}{Atualizacao\+Valor}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{funcoes_8c_ab1be4117bbb2b25e766b2906570ba3e0}{MAX\+\_\+\+ATUALIZACOES}}~10
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{funcoes_8c_a02cec11a7e71e797e3aaed73ff2e8803}{atualizar\+Ementas}} (\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}nova\+\_\+lista)
+\begin{DoxyCompactList}\small\item\em Atualiza a variável global das ementas. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a86393c7bcdc9be26d195f7b7b2d20e4a}{obter\+Ementas}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a lista global de ementas. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{funcoes_8c_a47c288249566595bbbb9c9714df3075b}{comparar\+Datas}} (const char \texorpdfstring{$\ast$}{*}data1, const char \texorpdfstring{$\ast$}{*}data2)
+\begin{DoxyCompactList}\small\item\em Compara duas datas no formato DD.\+MM.\+AAAA. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_aa4babdda3b35e146a545f567fcd13fb3}{limpar\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Limpa o buffer do teclado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_a01a3f268deb31b1ffe17d947b6b62b71}{pausar}} ()
+\begin{DoxyCompactList}\small\item\em Pausa a execução do programa até que o usuário pressione Enter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_ac6370ad36b5b3390e44c267cc6b5db26}{inicializar\+Controle\+Refeicoes}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa o controle de refeições. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{funcoes_8c_ae8c076fa09cff7227c360f7ffbe09bcf}{validar\+Refeicao\+Dia}} (const char \texorpdfstring{$\ast$}{*}dia)
+\begin{DoxyCompactList}\small\item\em Valida se é possível servir mais uma refeição no dia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_adf568f8770fbb54860ed806771e88738}{atualizar\+Valor\+Refeicao}} (float novo\+\_\+valor)
+\begin{DoxyCompactList}\small\item\em Atualiza o valor da refeição. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_ae55791c2654f4e7954a0def4d812cfca}{mostrar\+Valor\+Refeicao}} ()
+\begin{DoxyCompactList}\small\item\em Mostra o valor atual da refeição. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_aed0de4f7fab8605405ab6cdb09831a30}{criar\+No\+Func}} (\mbox{\hyperlink{struct_funcionario}{Funcionario}} func)
+\begin{DoxyCompactList}\small\item\em Cria um novo nó para a lista de funcionários. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_ab31e0f5e88a2707effdce2d01c92a842}{carregar\+Funcionarios}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Carrega dados dos funcionários a partir de um arquivo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a4e9de86848b6f0ae79a7ff88249e810c}{carregar\+Ementas}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Carrega dados das ementas a partir de um arquivo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a03e73aa8ed6b34ad81643b8c1fd366c9}{carregar\+Escolhas}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Carrega as escolhas dos utentes a partir de um arquivo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_a10c1388c4f6a7a27a23879722cfe8750}{libertar\+Memoria}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}}, \mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}}, \mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}})
+\begin{DoxyCompactList}\small\item\em Liberta toda a memória alocada para as listas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_a8c4698ced44ca34af8f4cbab08e93096}{listar\+Refeicoes\+Dia}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}}, \mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}}, \mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}}, const char \texorpdfstring{$\ast$}{*}dia)
+\begin{DoxyCompactList}\small\item\em Lista todas as refeições de um dia específico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_a691f599f4ab119773539c1147cf95ebb}{listar\+Refeicoes\+Servidas\+Semana}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}}, \mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}}, \mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}})
+\begin{DoxyCompactList}\small\item\em Lista o consumo semanal de refeições, dos utentes ordenados por ordem decrescente,. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_a05c36012fd60deb0f410fd594d246bd2}{listar\+Refeicoes\+Calorias}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}}, \mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}}, \mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}}, int num\+\_\+funcionario, const char \texorpdfstring{$\ast$}{*}data\+\_\+inicio, const char \texorpdfstring{$\ast$}{*}data\+\_\+fim)
+\begin{DoxyCompactList}\small\item\em Lista as refeições com um determinado número de calorias. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_a0ff0fc553daec9082bc572dc9b3a9613}{calcular\+Medias\+Calorias}} (\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}}, \mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}}, const char \texorpdfstring{$\ast$}{*}data\+\_\+inicio, const char \texorpdfstring{$\ast$}{*}data\+\_\+fim)
+\begin{DoxyCompactList}\small\item\em Calcula as médias de calorias consumidas por dia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_a177d0507ce5a8acc08ccf117924ddcb2}{gerar\+Tabela\+Semanal}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}}, \mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}}, \mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}}, int num\+\_\+funcionario)
+\begin{DoxyCompactList}\small\item\em Gera uma tabela semanal de refeições para um utente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcoes_8c_a94e30de071e3c0bff48b105df34e9579}{gerar\+Tabela\+Semanal\+Detalhada}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}}, \mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}}, \mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}}, int num\+\_\+funcionario)
+\begin{DoxyCompactList}\small\item\em Gera uma tabela semanal detalhada da ementa usufruída por um utente. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{funcoes_8c_a7f886f6fb9d16724acb21dca4110ec29}{stricmp}} (const char \texorpdfstring{$\ast$}{*}s1, const char \texorpdfstring{$\ast$}{*}s2)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_controle_refeicao}{Controle\+Refeicao}} \mbox{\hyperlink{funcoes_8c_a4869d2e6d95fd4ab88fbe809b4cf1940}{valor\+Refeicao}} = \{5.\+00, "{}29.\+06.\+2025"{}\}
+\item 
+int \mbox{\hyperlink{funcoes_8c_a76dbd8a812eb5f30a8fc94f7492ebbdf}{refeicoes\+\_\+servidas\+\_\+por\+\_\+dia}} = 0
+\item 
+char \mbox{\hyperlink{funcoes_8c_af183c00f15079013009c5e2db0837a0a}{dia\+\_\+atual}} \mbox{[}11\mbox{]} = "{}"{}
+\item 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a172402b47fc7cc0a7951986b85f26912}{funcionarios}} = NULL
+\item 
+\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}} = NULL
+\item 
+\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcoes_8c_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}} = NULL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Implementação das funções do sistema de gestão do espaço social. 
+
+\begin{DoxyAuthor}{Autor}
+\mbox{[}G36 -\/ Epoca Especial\mbox{]} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+2025-\/06-\/20
+\end{DoxyDate}
+Este ficheiro contém a implementação das funções auxiliares e principais para a gestão de funcionários, ementas, escolhas e controlo de refeições. Inclui manipulação de listas ligadas, operações de leitura e escrita, validação de dados e controlo de limites diários. 
+
+\label{doc-define-members}
+\Hypertarget{funcoes_8c_doc-define-members}
+\doxysubsection{Documentação das macros}
+\Hypertarget{funcoes_8c_ab1be4117bbb2b25e766b2906570ba3e0}\index{funcoes.c@{funcoes.c}!MAX\_ATUALIZACOES@{MAX\_ATUALIZACOES}}
+\index{MAX\_ATUALIZACOES@{MAX\_ATUALIZACOES}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_ATUALIZACOES}{MAX\_ATUALIZACOES}}
+{\footnotesize\ttfamily \label{funcoes_8c_ab1be4117bbb2b25e766b2906570ba3e0} 
+\#define MAX\+\_\+\+ATUALIZACOES~10}
+
+
+
+\label{doc-func-members}
+\Hypertarget{funcoes_8c_doc-func-members}
+\doxysubsection{Documentação das funções}
+\Hypertarget{funcoes_8c_a02cec11a7e71e797e3aaed73ff2e8803}\index{funcoes.c@{funcoes.c}!atualizarEmentas@{atualizarEmentas}}
+\index{atualizarEmentas@{atualizarEmentas}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{atualizarEmentas()}{atualizarEmentas()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a02cec11a7e71e797e3aaed73ff2e8803} 
+void atualizar\+Ementas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}}]{nova\+\_\+lista}{}\end{DoxyParamCaption})}
+
+
+
+Atualiza a variável global das ementas. 
+
+Atualiza as ementas com uma nova lista.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em nova\+\_\+lista} & Nova lista de ementas \\
+\hline
+\end{DoxyParams}
+\Hypertarget{funcoes_8c_adf568f8770fbb54860ed806771e88738}\index{funcoes.c@{funcoes.c}!atualizarValorRefeicao@{atualizarValorRefeicao}}
+\index{atualizarValorRefeicao@{atualizarValorRefeicao}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{atualizarValorRefeicao()}{atualizarValorRefeicao()}}
+{\footnotesize\ttfamily \label{funcoes_8c_adf568f8770fbb54860ed806771e88738} 
+void atualizar\+Valor\+Refeicao (\begin{DoxyParamCaption}\item[{float}]{novo\+\_\+valor}{}\end{DoxyParamCaption})}
+
+
+
+Atualiza o valor da refeição. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em novo\+\_\+valor} & Novo valor da refeição \\
+\hline
+\end{DoxyParams}
+\Hypertarget{funcoes_8c_a0ff0fc553daec9082bc572dc9b3a9613}\index{funcoes.c@{funcoes.c}!calcularMediasCalorias@{calcularMediasCalorias}}
+\index{calcularMediasCalorias@{calcularMediasCalorias}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{calcularMediasCalorias()}{calcularMediasCalorias()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a0ff0fc553daec9082bc572dc9b3a9613} 
+void calcular\+Medias\+Calorias (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}}]{ementas}{, }\item[{\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}}]{escolhas}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{data\+\_\+inicio}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{data\+\_\+fim}{}\end{DoxyParamCaption})}
+
+
+
+Calcula as médias de calorias consumidas por dia. 
+
+Calcula as médias de calorias das refeições.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em ementas} & Lista de ementas \\
+\hline
+{\em escolhas} & Lista de escolhas \\
+\hline
+{\em data\+\_\+inicio} & Data inicial do período \\
+\hline
+{\em data\+\_\+fim} & Data final do período\\
+\hline
+\end{DoxyParams}
+Calcula e exibe a média de calorias consumidas por dia no período especificado \Hypertarget{funcoes_8c_a4e9de86848b6f0ae79a7ff88249e810c}\index{funcoes.c@{funcoes.c}!carregarEmentas@{carregarEmentas}}
+\index{carregarEmentas@{carregarEmentas}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{carregarEmentas()}{carregarEmentas()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a4e9de86848b6f0ae79a7ff88249e810c} 
+\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*} carregar\+Ementas (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Carrega dados das ementas a partir de um arquivo. 
+
+Carrega a lista de ementas a partir de um ficheiro.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em filename} & Nome do arquivo contendo as ementas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Node\+Ementa\texorpdfstring{$\ast$}{*} Ponteiro para o início da lista de ementas ou NULL em caso de erro
+\end{DoxyReturn}
+Lê o arquivo CSV com dados das ementas e cria uma lista ligada O arquivo deve estar no formato\+: dia;data;prato\+\_\+carne;calorias\+\_\+carne;prato\+\_\+peixe;calorias\+\_\+peixe \Hypertarget{funcoes_8c_a03e73aa8ed6b34ad81643b8c1fd366c9}\index{funcoes.c@{funcoes.c}!carregarEscolhas@{carregarEscolhas}}
+\index{carregarEscolhas@{carregarEscolhas}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{carregarEscolhas()}{carregarEscolhas()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a03e73aa8ed6b34ad81643b8c1fd366c9} 
+\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*} carregar\+Escolhas (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Carrega as escolhas dos utentes a partir de um arquivo. 
+
+Carrega a lista de escolhas a partir de um ficheiro.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em filename} & Nome do arquivo contendo as escolhas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Node\+Escolha\texorpdfstring{$\ast$}{*} Ponteiro para o início da lista de escolhas ou NULL em caso de erro
+\end{DoxyReturn}
+Lê o arquivo CSV com as escolhas e cria uma lista ligada O arquivo deve estar no formato\+: dia;num\+\_\+funcionario;tipo\+\_\+prato \Hypertarget{funcoes_8c_ab31e0f5e88a2707effdce2d01c92a842}\index{funcoes.c@{funcoes.c}!carregarFuncionarios@{carregarFuncionarios}}
+\index{carregarFuncionarios@{carregarFuncionarios}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{carregarFuncionarios()}{carregarFuncionarios()}}
+{\footnotesize\ttfamily \label{funcoes_8c_ab31e0f5e88a2707effdce2d01c92a842} 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} carregar\+Funcionarios (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Carrega dados dos funcionários a partir de um arquivo. 
+
+Carrega a lista de funcionários a partir de um ficheiro.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em filename} & Nome do arquivo contendo os dados dos funcionários \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Node\+Func\texorpdfstring{$\ast$}{*} Ponteiro para o início da lista de funcionários ou NULL em caso de erro
+\end{DoxyReturn}
+Lê o arquivo CSV com dados dos funcionários e cria uma lista ligada O arquivo deve estar no formato\+: numero;nome;nif;telefone \Hypertarget{funcoes_8c_a47c288249566595bbbb9c9714df3075b}\index{funcoes.c@{funcoes.c}!compararDatas@{compararDatas}}
+\index{compararDatas@{compararDatas}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{compararDatas()}{compararDatas()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a47c288249566595bbbb9c9714df3075b} 
+int comparar\+Datas (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{data1}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{data2}{}\end{DoxyParamCaption})}
+
+
+
+Compara duas datas no formato DD.\+MM.\+AAAA. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em data1} & Primeira data \\
+\hline
+{\em data2} & Segunda data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+1 se data1 \texorpdfstring{$>$}{>} data2, -\/1 se data1 \texorpdfstring{$<$}{<} data2, 0 se são iguais 
+\end{DoxyReturn}
+\Hypertarget{funcoes_8c_aed0de4f7fab8605405ab6cdb09831a30}\index{funcoes.c@{funcoes.c}!criarNoFunc@{criarNoFunc}}
+\index{criarNoFunc@{criarNoFunc}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{criarNoFunc()}{criarNoFunc()}}
+{\footnotesize\ttfamily \label{funcoes_8c_aed0de4f7fab8605405ab6cdb09831a30} 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} criar\+No\+Func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_funcionario}{Funcionario}}}]{func}{}\end{DoxyParamCaption})}
+
+
+
+Cria um novo nó para a lista de funcionários. 
+
+Cria um novo nó de funcionário.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em func} & Estrutura com os dados do funcionário \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Node\+Func\texorpdfstring{$\ast$}{*} Ponteiro para o novo nó criado ou NULL em caso de falha
+\end{DoxyReturn}
+Aloca memória dinamicamente para um novo nó e inicializa seus campos \Hypertarget{funcoes_8c_a177d0507ce5a8acc08ccf117924ddcb2}\index{funcoes.c@{funcoes.c}!gerarTabelaSemanal@{gerarTabelaSemanal}}
+\index{gerarTabelaSemanal@{gerarTabelaSemanal}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{gerarTabelaSemanal()}{gerarTabelaSemanal()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a177d0507ce5a8acc08ccf117924ddcb2} 
+void gerar\+Tabela\+Semanal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{funcionarios}{, }\item[{\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}}]{ementas}{, }\item[{\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}}]{escolhas}{, }\item[{int}]{num\+\_\+funcionario}{}\end{DoxyParamCaption})}
+
+
+
+Gera uma tabela semanal de refeições para um utente. 
+
+Gera uma tabela semanal de refeições.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em funcionarios} & Lista de funcionários \\
+\hline
+{\em ementas} & Lista de ementas \\
+\hline
+{\em escolhas} & Lista de escolhas \\
+\hline
+{\em num\+\_\+funcionario} & Número do funcionário\\
+\hline
+\end{DoxyParams}
+Gera e exibe uma tabela com as escolhas de refeições do funcionário para a semana \Hypertarget{funcoes_8c_a94e30de071e3c0bff48b105df34e9579}\index{funcoes.c@{funcoes.c}!gerarTabelaSemanalDetalhada@{gerarTabelaSemanalDetalhada}}
+\index{gerarTabelaSemanalDetalhada@{gerarTabelaSemanalDetalhada}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{gerarTabelaSemanalDetalhada()}{gerarTabelaSemanalDetalhada()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a94e30de071e3c0bff48b105df34e9579} 
+void gerar\+Tabela\+Semanal\+Detalhada (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{funcionarios}{, }\item[{\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}}]{ementas}{, }\item[{\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}}]{escolhas}{, }\item[{int}]{num\+\_\+funcionario}{}\end{DoxyParamCaption})}
+
+
+
+Gera uma tabela semanal detalhada da ementa usufruída por um utente. 
+
+Gera uma tabela semanal detalhada de refeições.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em funcionarios} & Lista de funcionários \\
+\hline
+{\em ementas} & Lista de ementas \\
+\hline
+{\em escolhas} & Lista de escolhas \\
+\hline
+{\em num\+\_\+funcionario} & Número do funcionário\\
+\hline
+\end{DoxyParams}
+Exibe uma tabela com colunas para cada tipo de prato e calorias, linhas de 2ª a 6ª feira \Hypertarget{funcoes_8c_ac6370ad36b5b3390e44c267cc6b5db26}\index{funcoes.c@{funcoes.c}!inicializarControleRefeicoes@{inicializarControleRefeicoes}}
+\index{inicializarControleRefeicoes@{inicializarControleRefeicoes}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{inicializarControleRefeicoes()}{inicializarControleRefeicoes()}}
+{\footnotesize\ttfamily \label{funcoes_8c_ac6370ad36b5b3390e44c267cc6b5db26} 
+void inicializar\+Controle\+Refeicoes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa o controle de refeições. 
+
+Inicializa o controlo de refeições.
+
+Configura o valor inicial da refeição e reseta o contador diário \Hypertarget{funcoes_8c_a10c1388c4f6a7a27a23879722cfe8750}\index{funcoes.c@{funcoes.c}!libertarMemoria@{libertarMemoria}}
+\index{libertarMemoria@{libertarMemoria}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{libertarMemoria()}{libertarMemoria()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a10c1388c4f6a7a27a23879722cfe8750} 
+void libertar\+Memoria (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{funcionarios}{, }\item[{\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}}]{ementas}{, }\item[{\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}}]{escolhas}{}\end{DoxyParamCaption})}
+
+
+
+Liberta toda a memória alocada para as listas. 
+
+Liberta a memória utilizada pelas listas.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em funcionarios} & Ponteiro para a lista de funcionários \\
+\hline
+{\em ementas} & Ponteiro para a lista de ementas \\
+\hline
+{\em escolhas} & Ponteiro para a lista de escolhas\\
+\hline
+\end{DoxyParams}
+Percorre todas as listas libertando a memória alocada para cada nó \Hypertarget{funcoes_8c_aa4babdda3b35e146a545f567fcd13fb3}\index{funcoes.c@{funcoes.c}!limparBuffer@{limparBuffer}}
+\index{limparBuffer@{limparBuffer}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{limparBuffer()}{limparBuffer()}}
+{\footnotesize\ttfamily \label{funcoes_8c_aa4babdda3b35e146a545f567fcd13fb3} 
+void limpar\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Limpa o buffer do teclado. 
+
+Remove caracteres residuais do buffer de entrada \Hypertarget{funcoes_8c_a05c36012fd60deb0f410fd594d246bd2}\index{funcoes.c@{funcoes.c}!listarRefeicoesCalorias@{listarRefeicoesCalorias}}
+\index{listarRefeicoesCalorias@{listarRefeicoesCalorias}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{listarRefeicoesCalorias()}{listarRefeicoesCalorias()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a05c36012fd60deb0f410fd594d246bd2} 
+void listar\+Refeicoes\+Calorias (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{funcionarios}{, }\item[{\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}}]{ementas}{, }\item[{\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}}]{escolhas}{, }\item[{int}]{num\+\_\+funcionario}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{data\+\_\+inicio}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{data\+\_\+fim}{}\end{DoxyParamCaption})}
+
+
+
+Lista as refeições com um determinado número de calorias. 
+
+Esta função exibe todas as refeições que têm um número de calorias dentro de um intervalo especificado, para um determinado funcionário e intervalo de datas.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em funcionarios} & Lista de funcionários \\
+\hline
+{\em ementas} & Lista de ementas \\
+\hline
+{\em escolhas} & Lista de escolhas \\
+\hline
+{\em num\+\_\+funcionario} & Número do funcionário \\
+\hline
+{\em data\+\_\+inicio} & Data de início do intervalo \\
+\hline
+{\em data\+\_\+fim} & Data de fim do intervalo \\
+\hline
+\end{DoxyParams}
+\Hypertarget{funcoes_8c_a8c4698ced44ca34af8f4cbab08e93096}\index{funcoes.c@{funcoes.c}!listarRefeicoesDia@{listarRefeicoesDia}}
+\index{listarRefeicoesDia@{listarRefeicoesDia}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{listarRefeicoesDia()}{listarRefeicoesDia()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a8c4698ced44ca34af8f4cbab08e93096} 
+void listar\+Refeicoes\+Dia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{funcionarios}{, }\item[{\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}}]{ementas}{, }\item[{\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}}]{escolhas}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{dia}{}\end{DoxyParamCaption})}
+
+
+
+Lista todas as refeições de um dia específico. 
+
+Lista as refeições de um determinado dia.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em funcionarios} & Lista de funcionários \\
+\hline
+{\em ementas} & Lista de ementas \\
+\hline
+{\em escolhas} & Lista de escolhas \\
+\hline
+{\em dia} & Dia para listar as refeições\\
+\hline
+\end{DoxyParams}
+Mostra as escolhas de refeições feitas pelos funcionários em um determinado dia \Hypertarget{funcoes_8c_a691f599f4ab119773539c1147cf95ebb}\index{funcoes.c@{funcoes.c}!listarRefeicoesServidasSemana@{listarRefeicoesServidasSemana}}
+\index{listarRefeicoesServidasSemana@{listarRefeicoesServidasSemana}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{listarRefeicoesServidasSemana()}{listarRefeicoesServidasSemana()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a691f599f4ab119773539c1147cf95ebb} 
+void listar\+Refeicoes\+Servidas\+Semana (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{funcionarios}{, }\item[{\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*}}]{ementas}{, }\item[{\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}} \texorpdfstring{$\ast$}{*}}]{escolhas}{}\end{DoxyParamCaption})}
+
+
+
+Lista o consumo semanal de refeições, dos utentes ordenados por ordem decrescente,. 
+
+Lista as refeições servidas durante uma semana.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em funcionarios} & Lista de funcionários \\
+\hline
+{\em ementas} & Lista de ementas \\
+\hline
+{\em escolhas} & Lista de escolhas\\
+\hline
+\end{DoxyParams}
+Ordena e exibe os utentes com base no número de refeições escolhidas \Hypertarget{funcoes_8c_ae55791c2654f4e7954a0def4d812cfca}\index{funcoes.c@{funcoes.c}!mostrarValorRefeicao@{mostrarValorRefeicao}}
+\index{mostrarValorRefeicao@{mostrarValorRefeicao}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{mostrarValorRefeicao()}{mostrarValorRefeicao()}}
+{\footnotesize\ttfamily \label{funcoes_8c_ae55791c2654f4e7954a0def4d812cfca} 
+void mostrar\+Valor\+Refeicao (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Mostra o valor atual da refeição. 
+
+Esta função exibe o valor monetário atual da refeição. \Hypertarget{funcoes_8c_a86393c7bcdc9be26d195f7b7b2d20e4a}\index{funcoes.c@{funcoes.c}!obterEmentas@{obterEmentas}}
+\index{obterEmentas@{obterEmentas}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{obterEmentas()}{obterEmentas()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a86393c7bcdc9be26d195f7b7b2d20e4a} 
+\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}} \texorpdfstring{$\ast$}{*} obter\+Ementas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém a lista global de ementas. 
+
+Obtém a lista atual de ementas.
+
+\begin{DoxyReturn}{Retorna}
+Ponteiro para a lista de ementas 
+\end{DoxyReturn}
+\Hypertarget{funcoes_8c_a01a3f268deb31b1ffe17d947b6b62b71}\index{funcoes.c@{funcoes.c}!pausar@{pausar}}
+\index{pausar@{pausar}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{pausar()}{pausar()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a01a3f268deb31b1ffe17d947b6b62b71} 
+void pausar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Pausa a execução do programa até que o usuário pressione Enter. 
+
+Exibe uma mensagem e aguarda input do usuário \Hypertarget{funcoes_8c_a7f886f6fb9d16724acb21dca4110ec29}\index{funcoes.c@{funcoes.c}!stricmp@{stricmp}}
+\index{stricmp@{stricmp}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{stricmp()}{stricmp()}}
+{\footnotesize\ttfamily \label{funcoes_8c_a7f886f6fb9d16724acb21dca4110ec29} 
+int stricmp (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{s1}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{s2}{}\end{DoxyParamCaption})}
+
+\Hypertarget{funcoes_8c_ae8c076fa09cff7227c360f7ffbe09bcf}\index{funcoes.c@{funcoes.c}!validarRefeicaoDia@{validarRefeicaoDia}}
+\index{validarRefeicaoDia@{validarRefeicaoDia}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{validarRefeicaoDia()}{validarRefeicaoDia()}}
+{\footnotesize\ttfamily \label{funcoes_8c_ae8c076fa09cff7227c360f7ffbe09bcf} 
+int validar\+Refeicao\+Dia (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{dia}{}\end{DoxyParamCaption})}
+
+
+
+Valida se é possível servir mais uma refeição no dia. 
+
+Valida um dia para registo de refeição.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em dia} & Dia da semana para validação \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+1 se pode servir, 0 se não pode 
+\end{DoxyReturn}
+
+
+\label{doc-var-members}
+\Hypertarget{funcoes_8c_doc-var-members}
+\doxysubsection{Documentação das variáveis}
+\Hypertarget{funcoes_8c_af183c00f15079013009c5e2db0837a0a}\index{funcoes.c@{funcoes.c}!dia\_atual@{dia\_atual}}
+\index{dia\_atual@{dia\_atual}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{dia\_atual}{dia\_atual}}
+{\footnotesize\ttfamily \label{funcoes_8c_af183c00f15079013009c5e2db0837a0a} 
+char dia\+\_\+atual\mbox{[}11\mbox{]} = "{}"{}}
+
+\Hypertarget{funcoes_8c_a594e746803df4f6d6ee84c4a96bf5c88}\index{funcoes.c@{funcoes.c}!ementas@{ementas}}
+\index{ementas@{ementas}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{ementas}{ementas}}
+{\footnotesize\ttfamily \label{funcoes_8c_a594e746803df4f6d6ee84c4a96bf5c88} 
+\mbox{\hyperlink{struct_node_ementa}{Node\+Ementa}}\texorpdfstring{$\ast$}{*} ementas = NULL}
+
+\Hypertarget{funcoes_8c_a3f2c3f621bbfad2635bde8aab92dce7d}\index{funcoes.c@{funcoes.c}!escolhas@{escolhas}}
+\index{escolhas@{escolhas}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{escolhas}{escolhas}}
+{\footnotesize\ttfamily \label{funcoes_8c_a3f2c3f621bbfad2635bde8aab92dce7d} 
+\mbox{\hyperlink{struct_node_escolha}{Node\+Escolha}}\texorpdfstring{$\ast$}{*} escolhas = NULL}
+
+\Hypertarget{funcoes_8c_a172402b47fc7cc0a7951986b85f26912}\index{funcoes.c@{funcoes.c}!funcionarios@{funcionarios}}
+\index{funcionarios@{funcionarios}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{funcionarios}{funcionarios}}
+{\footnotesize\ttfamily \label{funcoes_8c_a172402b47fc7cc0a7951986b85f26912} 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}}\texorpdfstring{$\ast$}{*} funcionarios = NULL}
+
+\Hypertarget{funcoes_8c_a76dbd8a812eb5f30a8fc94f7492ebbdf}\index{funcoes.c@{funcoes.c}!refeicoes\_servidas\_por\_dia@{refeicoes\_servidas\_por\_dia}}
+\index{refeicoes\_servidas\_por\_dia@{refeicoes\_servidas\_por\_dia}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{refeicoes\_servidas\_por\_dia}{refeicoes\_servidas\_por\_dia}}
+{\footnotesize\ttfamily \label{funcoes_8c_a76dbd8a812eb5f30a8fc94f7492ebbdf} 
+int refeicoes\+\_\+servidas\+\_\+por\+\_\+dia = 0}
+
+\Hypertarget{funcoes_8c_a4869d2e6d95fd4ab88fbe809b4cf1940}\index{funcoes.c@{funcoes.c}!valorRefeicao@{valorRefeicao}}
+\index{valorRefeicao@{valorRefeicao}!funcoes.c@{funcoes.c}}
+\doxysubsubsection{\texorpdfstring{valorRefeicao}{valorRefeicao}}
+{\footnotesize\ttfamily \label{funcoes_8c_a4869d2e6d95fd4ab88fbe809b4cf1940} 
+struct \mbox{\hyperlink{struct_controle_refeicao}{Controle\+Refeicao}} valor\+Refeicao = \{5.\+00, "{}29.\+06.\+2025"{}\}}
+

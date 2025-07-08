@@ -3,6 +3,11 @@
  * @brief Implementação das funções do sistema de gestão do espaço social
  * @author [G36 - Epoca Especial]
  * @date 2025-06-20
+ *
+ * Este ficheiro contém a implementação das funções auxiliares e principais
+ * para a gestão de funcionários, ementas, escolhas e controlo de refeições.
+ * Inclui manipulação de listas ligadas, operações de leitura e escrita,
+ * validação de dados e controlo de limites diários.
  */
 
 #include "estruturas.h"

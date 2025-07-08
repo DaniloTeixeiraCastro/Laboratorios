@@ -1,0 +1,188 @@
+\doxysection{Referência ao ficheiro src/funcionarios.h}
+\hypertarget{funcionarios_8h}{}\label{funcionarios_8h}\index{src/funcionarios.h@{src/funcionarios.h}}
+
+
+Módulo de gestão de funcionários do sistema de refeições.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_funcionario}{Funcionario}}
+\begin{DoxyCompactList}\small\item\em Estrutura que representa um funcionário. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_node_func}{Node\+Func}}
+\begin{DoxyCompactList}\small\item\em Estrutura de nó para lista ligada de funcionários. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Definições de tipos}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Node\+Func \mbox{\hyperlink{funcionarios_8h_a0a1562228b73576987bdd1f62a3a8760}{Node\+Func}}
+\begin{DoxyCompactList}\small\item\em Estrutura de nó para lista ligada de funcionários. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcionarios_8h_aed0de4f7fab8605405ab6cdb09831a30}{criar\+No\+Func}} (\mbox{\hyperlink{struct_funcionario}{Funcionario}} func)
+\begin{DoxyCompactList}\small\item\em Cria um novo nó de funcionário. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcionarios_8h_ac57199801aa2ad636321fc40bf8d908b}{carregar\+Funcionarios}} (const char \texorpdfstring{$\ast$}{*}filename, int formato\+\_\+tab)
+\begin{DoxyCompactList}\small\item\em Carrega funcionários de um arquivo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcionarios_8h_a2fa5a89fe9e47ab434719cd565709156}{listar\+Funcionarios}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}lista)
+\begin{DoxyCompactList}\small\item\em Lista todos os funcionários cadastrados. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funcionarios_8h_ae28fe8960fe5b1cbe4399f2612d68538}{buscar\+Funcionario}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}lista, int numero)
+\begin{DoxyCompactList}\small\item\em Busca um funcionário pelo número. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{funcionarios_8h_ad40914b6ec3098429ca8f0317a9b4231}{libertar\+Funcionarios}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}lista)
+\begin{DoxyCompactList}\small\item\em Liberta a memória alocada para a lista de funcionários. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{funcionarios_8h_a65e56551f7052fc12dcbb0e61c441d9c}{salvar\+Funcionarios}} (\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}lista, const char \texorpdfstring{$\ast$}{*}filename, int formato\+\_\+bin)
+\begin{DoxyCompactList}\small\item\em Salva a lista de funcionários em arquivo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Módulo de gestão de funcionários do sistema de refeições. 
+
+\begin{DoxyAuthor}{Autor}
+\mbox{[}Seu Nome\mbox{]} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+\mbox{[}Data\mbox{]}
+\end{DoxyDate}
+Este ficheiro define as estruturas e protótipos de funções para a gestão de funcionários, incluindo operações de criação, carregamento, listagem, busca, libertação de memória e salvamento de dados. 
+
+\label{doc-typedef-members}
+\Hypertarget{funcionarios_8h_doc-typedef-members}
+\doxysubsection{Documentação dos tipos}
+\Hypertarget{funcionarios_8h_a0a1562228b73576987bdd1f62a3a8760}\index{funcionarios.h@{funcionarios.h}!NodeFunc@{NodeFunc}}
+\index{NodeFunc@{NodeFunc}!funcionarios.h@{funcionarios.h}}
+\doxysubsubsection{\texorpdfstring{NodeFunc}{NodeFunc}}
+{\footnotesize\ttfamily \label{funcionarios_8h_a0a1562228b73576987bdd1f62a3a8760} 
+typedef struct Node\+Func Node\+Func}
+
+
+
+Estrutura de nó para lista ligada de funcionários. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{funcionarios_8h_doc-func-members}
+\doxysubsection{Documentação das funções}
+\Hypertarget{funcionarios_8h_ae28fe8960fe5b1cbe4399f2612d68538}\index{funcionarios.h@{funcionarios.h}!buscarFuncionario@{buscarFuncionario}}
+\index{buscarFuncionario@{buscarFuncionario}!funcionarios.h@{funcionarios.h}}
+\doxysubsubsection{\texorpdfstring{buscarFuncionario()}{buscarFuncionario()}}
+{\footnotesize\ttfamily \label{funcionarios_8h_ae28fe8960fe5b1cbe4399f2612d68538} 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} buscar\+Funcionario (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{lista}{, }\item[{int}]{numero}{}\end{DoxyParamCaption})}
+
+
+
+Busca um funcionário pelo número. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em lista} & Ponteiro para o início da lista de funcionários \\
+\hline
+{\em numero} & Número do funcionário a ser buscado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Ponteiro para o nó do funcionário encontrado ou NULL se não encontrado 
+\end{DoxyReturn}
+\Hypertarget{funcionarios_8h_ac57199801aa2ad636321fc40bf8d908b}\index{funcionarios.h@{funcionarios.h}!carregarFuncionarios@{carregarFuncionarios}}
+\index{carregarFuncionarios@{carregarFuncionarios}!funcionarios.h@{funcionarios.h}}
+\doxysubsubsection{\texorpdfstring{carregarFuncionarios()}{carregarFuncionarios()}}
+{\footnotesize\ttfamily \label{funcionarios_8h_ac57199801aa2ad636321fc40bf8d908b} 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} carregar\+Funcionarios (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{int}]{formato\+\_\+tab}{}\end{DoxyParamCaption})}
+
+
+
+Carrega funcionários de um arquivo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em filename} & Nome do arquivo a ser lido \\
+\hline
+{\em formato\+\_\+tab} & Flag indicando se o arquivo usa tabulação como separador \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Ponteiro para o início da lista de funcionários ou NULL em caso de erro 
+\end{DoxyReturn}
+\Hypertarget{funcionarios_8h_aed0de4f7fab8605405ab6cdb09831a30}\index{funcionarios.h@{funcionarios.h}!criarNoFunc@{criarNoFunc}}
+\index{criarNoFunc@{criarNoFunc}!funcionarios.h@{funcionarios.h}}
+\doxysubsubsection{\texorpdfstring{criarNoFunc()}{criarNoFunc()}}
+{\footnotesize\ttfamily \label{funcionarios_8h_aed0de4f7fab8605405ab6cdb09831a30} 
+\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*} criar\+No\+Func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_funcionario}{Funcionario}}}]{func}{}\end{DoxyParamCaption})}
+
+
+
+Cria um novo nó de funcionário. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em func} & Estrutura \doxylink{struct_funcionario}{Funcionario} com os dados do funcionário \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Ponteiro para o novo nó criado ou NULL em caso de erro
+\end{DoxyReturn}
+Cria um novo nó de funcionário.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em func} & Estrutura com os dados do funcionário \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Node\+Func\texorpdfstring{$\ast$}{*} Ponteiro para o novo nó criado ou NULL em caso de falha
+\end{DoxyReturn}
+Aloca memória dinamicamente para um novo nó e inicializa seus campos \Hypertarget{funcionarios_8h_ad40914b6ec3098429ca8f0317a9b4231}\index{funcionarios.h@{funcionarios.h}!libertarFuncionarios@{libertarFuncionarios}}
+\index{libertarFuncionarios@{libertarFuncionarios}!funcionarios.h@{funcionarios.h}}
+\doxysubsubsection{\texorpdfstring{libertarFuncionarios()}{libertarFuncionarios()}}
+{\footnotesize\ttfamily \label{funcionarios_8h_ad40914b6ec3098429ca8f0317a9b4231} 
+void libertar\+Funcionarios (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{lista}{}\end{DoxyParamCaption})}
+
+
+
+Liberta a memória alocada para a lista de funcionários. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em lista} & Ponteiro para o início da lista de funcionários \\
+\hline
+\end{DoxyParams}
+\Hypertarget{funcionarios_8h_a2fa5a89fe9e47ab434719cd565709156}\index{funcionarios.h@{funcionarios.h}!listarFuncionarios@{listarFuncionarios}}
+\index{listarFuncionarios@{listarFuncionarios}!funcionarios.h@{funcionarios.h}}
+\doxysubsubsection{\texorpdfstring{listarFuncionarios()}{listarFuncionarios()}}
+{\footnotesize\ttfamily \label{funcionarios_8h_a2fa5a89fe9e47ab434719cd565709156} 
+void listar\+Funcionarios (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{lista}{}\end{DoxyParamCaption})}
+
+
+
+Lista todos os funcionários cadastrados. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em lista} & Ponteiro para o início da lista de funcionários \\
+\hline
+\end{DoxyParams}
+\Hypertarget{funcionarios_8h_a65e56551f7052fc12dcbb0e61c441d9c}\index{funcionarios.h@{funcionarios.h}!salvarFuncionarios@{salvarFuncionarios}}
+\index{salvarFuncionarios@{salvarFuncionarios}!funcionarios.h@{funcionarios.h}}
+\doxysubsubsection{\texorpdfstring{salvarFuncionarios()}{salvarFuncionarios()}}
+{\footnotesize\ttfamily \label{funcionarios_8h_a65e56551f7052fc12dcbb0e61c441d9c} 
+int salvar\+Funcionarios (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_node_func}{Node\+Func}} \texorpdfstring{$\ast$}{*}}]{lista}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{int}]{formato\+\_\+bin}{}\end{DoxyParamCaption})}
+
+
+
+Salva a lista de funcionários em arquivo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em lista} & Ponteiro para o início da lista de funcionários \\
+\hline
+{\em filename} & Nome do arquivo onde salvar \\
+\hline
+{\em formato\+\_\+bin} & Flag indicando se deve salvar em formato binário \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+1 se sucesso, 0 se erro 
+\end{DoxyReturn}

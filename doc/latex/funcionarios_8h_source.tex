@@ -1,0 +1,40 @@
+\doxysection{funcionarios.\+h}
+\hypertarget{funcionarios_8h_source}{}\label{funcionarios_8h_source}\index{src/funcionarios.h@{src/funcionarios.h}}
+\mbox{\hyperlink{funcionarios_8h}{Ir para a documentação deste ficheiro.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ FUNCIONARIOS\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ FUNCIONARIOS\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_funcionario_a228840806049ffddabd82177b5b6be82}{numero}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_funcionario_a96c6052616d5e7da1dc65f6633872abd}{nome}}[100];\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_funcionario_a716cc49288ca3bf62128ddc40a468842}{nif}}[10];\ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_funcionario_a27f11b9571d2ecfe21f47aa56f098e0e}{telefone}}[15];\ \ }
+\DoxyCodeLine{00027\ \}\ \mbox{\hyperlink{struct_funcionario}{Funcionario}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_func}{NodeFunc}}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{struct_funcionario}{Funcionario}}\ \mbox{\hyperlink{struct_node_func_ab421b9e64e2c9984f7a0f6418c2dbbb8}{func}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{struct_node_func_aa5d9dd10ec6c89c995afe8c95ebadb4c}{prox}};\ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \}\ \mbox{\hyperlink{struct_node_func}{NodeFunc}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{funcionarios_8h_aed0de4f7fab8605405ab6cdb09831a30}{criarNoFunc}}(\mbox{\hyperlink{struct_funcionario}{Funcionario}}\ \mbox{\hyperlink{struct_node_func_ab421b9e64e2c9984f7a0f6418c2dbbb8}{func}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{funcionarios_8h_ac57199801aa2ad636321fc40bf8d908b}{carregarFuncionarios}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename,\ \textcolor{keywordtype}{int}\ formato\_tab);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funcionarios_8h_a2fa5a89fe9e47ab434719cd565709156}{listarFuncionarios}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ lista);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00064\ \mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{funcionarios_8h_ae28fe8960fe5b1cbe4399f2612d68538}{buscarFuncionario}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ lista,\ \textcolor{keywordtype}{int}\ numero);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funcionarios_8h_ad40914b6ec3098429ca8f0317a9b4231}{libertarFuncionarios}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ lista);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{funcionarios_8h_a65e56551f7052fc12dcbb0e61c441d9c}{salvarFuncionarios}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ lista,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename,\ \textcolor{keywordtype}{int}\ formato\_bin);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ FUNCIONARIOS\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

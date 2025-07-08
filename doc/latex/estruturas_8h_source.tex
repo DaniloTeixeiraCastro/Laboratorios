@@ -1,0 +1,113 @@
+\doxysection{estruturas.\+h}
+\hypertarget{estruturas_8h_source}{}\label{estruturas_8h_source}\index{src/include/estruturas.h@{src/include/estruturas.h}}
+\mbox{\hyperlink{estruturas_8h}{Ir para a documentação deste ficheiro.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ ESTRUTURAS\_H}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ ESTRUTURAS\_H}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ MAX\_NOME\ 50}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ MAX\_LINE\ 256}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ LIMITE\_REFEICOES\_DIARIO\ 200}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Estrutura\ para\ Funcionário}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ numero;\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{char}\ nome[\mbox{\hyperlink{estruturas_8h_a650a929b45480c0875d8c814f442b6ac}{MAX\_NOME}}];\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_funcionario_a716cc49288ca3bf62128ddc40a468842}{nif}};\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_funcionario_a27f11b9571d2ecfe21f47aa56f098e0e}{telefone}};\ }
+\DoxyCodeLine{00027\ \}\ \mbox{\hyperlink{struct_funcionario}{Funcionario}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_prato_a60d0c2da895b3798a3639f00679d5bd3}{nome}}[\mbox{\hyperlink{estruturas_8h_a650a929b45480c0875d8c814f442b6ac}{MAX\_NOME}}];\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_prato_a9bda959b46d2b20b2ddbca71b3db937c}{calorias}};\ }
+\DoxyCodeLine{00037\ \}\ \mbox{\hyperlink{struct_prato}{Prato}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_ementa_a1cdbeb06d1c794b7b060d899b266175b}{dia}}[10];\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_ementa_a0dc2b21d22daa10f99e374912ec55271}{data}}[11];\ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{struct_prato}{Prato}}\ \mbox{\hyperlink{struct_ementa_a7a77461f58d1badc983c58edb6bd9b9b}{prato\_carne}};\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{struct_prato}{Prato}}\ \mbox{\hyperlink{struct_ementa_a1d451715ec076a09a47a391f8256c08a}{prato\_peixe}};\ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{struct_prato}{Prato}}\ \mbox{\hyperlink{struct_ementa_aab86ad07a3328ba7446a2600d1f583ae}{prato\_dieta}};\ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{struct_prato}{Prato}}\ \mbox{\hyperlink{struct_ementa_ab6815c5e5979f74b685cfbdfa31cf7d7}{prato\_vegetariano}};\ }
+\DoxyCodeLine{00052\ \}\ \mbox{\hyperlink{struct_ementa}{Ementa}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_escolha_a8e4e19fabd09fdff4fb886e1a2d543d3}{dia}}[10];\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_escolha_a5af9d29ff8bdeb0855349eb89f42fd64}{num\_funcionario}};\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_escolha_a80bca9023560de174c0a7f00ead7ee8d}{tipo\_prato}};\ }
+\DoxyCodeLine{00063\ \}\ \mbox{\hyperlink{struct_escolha}{Escolha}};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_controle_refeicao}{ControleRefeicao}}\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_controle_refeicao_a0678bc026ac1f25665a71810c3c08909}{valor}};\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_controle_refeicao_ace9fe8ef12b504fe5907c2d0a11ca43e}{data\_ultima\_atualizacao}}[11];\ }
+\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ Nó\ para\ lista\ de\ funcionários}}
+\DoxyCodeLine{00076\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_func}{NodeFunc}}\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{struct_funcionario}{Funcionario}}\ \mbox{\hyperlink{struct_node_func_ab421b9e64e2c9984f7a0f6418c2dbbb8}{func}};\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{struct_node_func_aa5d9dd10ec6c89c995afe8c95ebadb4c}{prox}};\ }
+\DoxyCodeLine{00079\ \}\ \mbox{\hyperlink{struct_node_func}{NodeFunc}};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ Nó\ para\ lista\ de\ ementas}}
+\DoxyCodeLine{00082\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{struct_ementa}{Ementa}}\ \mbox{\hyperlink{struct_node_ementa_a53ddb5f9ef65e2fb269b6eb8a4821e2d}{ementa}};\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{struct_node_ementa_af58ba6d961d5b8df59a98f15009a863c}{prox}};\ }
+\DoxyCodeLine{00085\ \}\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ Nó\ para\ lista\ de\ escolhas}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{struct_escolha}{Escolha}}\ \mbox{\hyperlink{struct_node_escolha_ad1ba741c7eea2d7ee463ed26d72714cd}{escolha}};\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{struct_node_escolha_abda55a918ddf8f80120d699bfcd986a8}{prox}};\ }
+\DoxyCodeLine{00091\ \}\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00101\ \mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{estruturas_8h_aed0de4f7fab8605405ab6cdb09831a30}{criarNoFunc}}(\mbox{\hyperlink{struct_funcionario}{Funcionario}}\ func);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00111\ \mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{estruturas_8h_ab31e0f5e88a2707effdce2d01c92a842}{carregarFuncionarios}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00121\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a4e9de86848b6f0ae79a7ff88249e810c}{carregarEmentas}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00131\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{estruturas_8h_a03e73aa8ed6b34ad81643b8c1fd366c9}{carregarEscolhas}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filename);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_a02cec11a7e71e797e3aaed73ff2e8803}{atualizarEmentas}}(\mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ nova\_lista);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00148\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a86393c7bcdc9be26d195f7b7b2d20e4a}{obterEmentas}}();}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00160\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_a8c4698ced44ca34af8f4cbab08e93096}{listarRefeicoesDia}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}},\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}},\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ dia);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00171\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_a691f599f4ab119773539c1147cf95ebb}{listarRefeicoesServidasSemana}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}},\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}},\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}});}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00186\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_a05c36012fd60deb0f410fd594d246bd2}{listarRefeicoesCalorias}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}},\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}},\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}},\ \textcolor{keywordtype}{int}\ num\_funcionario,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data\_inicio,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data\_fim);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00198\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_a0ff0fc553daec9082bc572dc9b3a9613}{calcularMediasCalorias}}(\mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}},\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data\_inicio,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data\_fim);}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00210\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_a177d0507ce5a8acc08ccf117924ddcb2}{gerarTabelaSemanal}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}},\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}},\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}},\ \textcolor{keywordtype}{int}\ num\_funcionario);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00223\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_a94e30de071e3c0bff48b105df34e9579}{gerarTabelaSemanalDetalhada}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}},\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}},\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}},\ \textcolor{keywordtype}{int}\ num\_funcionario);}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00234\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_a10c1388c4f6a7a27a23879722cfe8750}{libertarMemoria}}(\mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}},\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}},\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}});}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00241\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_ac6370ad36b5b3390e44c267cc6b5db26}{inicializarControleRefeicoes}}();}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00251\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{estruturas_8h_ae8c076fa09cff7227c360f7ffbe09bcf}{validarRefeicaoDia}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ dia);}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00260\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_adf568f8770fbb54860ed806771e88738}{atualizarValorRefeicao}}(\textcolor{keywordtype}{float}\ novo\_valor);}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00266\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_ae55791c2654f4e7954a0def4d812cfca}{mostrarValorRefeicao}}();}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \textcolor{comment}{//\ Protótipos\ de\ funções\ uteis}}
+\DoxyCodeLine{00269\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_aa4babdda3b35e146a545f567fcd13fb3}{limparBuffer}}();}
+\DoxyCodeLine{00270\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{estruturas_8h_a01a3f268deb31b1ffe17d947b6b62b71}{pausar}}();}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_node_func}{NodeFunc}}*\ \mbox{\hyperlink{estruturas_8h_a172402b47fc7cc0a7951986b85f26912}{funcionarios}};}
+\DoxyCodeLine{00273\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_node_ementa}{NodeEmenta}}*\ \mbox{\hyperlink{estruturas_8h_a594e746803df4f6d6ee84c4a96bf5c88}{ementas}};}
+\DoxyCodeLine{00274\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_node_escolha}{NodeEscolha}}*\ \mbox{\hyperlink{estruturas_8h_a3f2c3f621bbfad2635bde8aab92dce7d}{escolhas}};}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

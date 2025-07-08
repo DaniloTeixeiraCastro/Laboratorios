@@ -3,6 +3,10 @@
  * @brief Módulo de gestão de funcionários do sistema de refeições
  * @author [Seu Nome]
  * @date [Data]
+ *
+ * Este ficheiro define as estruturas e protótipos de funções para a gestão
+ * de funcionários, incluindo operações de criação, carregamento, listagem,
+ * busca, libertação de memória e salvamento de dados.
  */
 
 #ifndef FUNCIONARIOS_H

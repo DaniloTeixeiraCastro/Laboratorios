@@ -1,0 +1,105 @@
+\doxysection{Referência ao ficheiro src/main.c}
+\hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
+
+
+Sistema de Gestão do Espaço Social.  
+
+
+{\ttfamily \#include "{}estruturas.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Função principal do programa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Sistema de Gestão do Espaço Social. 
+
+\begin{DoxyAuthor}{Autor}
+\mbox{[}G36 -\/ Epoca Especial\mbox{]} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+2025-\/06-\/20
+\end{DoxyDate}
+Este ficheiro implementa o menu principal do sistema, permitindo ao utilizador carregar dados, consultar informações e efetuar operações relacionadas com a gestão de refeições e utentes. 
+
+\label{doc-func-members}
+\Hypertarget{main_8c_doc-func-members}
+\doxysubsection{Documentação das funções}
+\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Função principal do programa. 
+
+\begin{DoxyReturn}{Retorna}
+0 em caso de sucesso, outro valor em caso de erro
+\end{DoxyReturn}
+Esta função apresenta o menu principal ao utilizador, permitindo-\/lhe\+:
+\begin{DoxyItemize}
+\item Carregar dados dos funcionários
+\item Carregar a ementa semanal
+\item Carregar as escolhas dos utentes
+\item Listar refeições requeridas por dia
+\item Apresentar o resumo semanal de consumo por utente
+\item Consultar refeições de um utente
+\item Calcular médias de calorias
+\item Gerar tabela semanal detalhada de um utente
+\item Sair do programa
+\end{DoxyItemize}
+
+O menu é apresentado em ciclo até o utilizador escolher a opção de sair. \texorpdfstring{$<$}{<} Variável que armazena a opção escolhida pelo utilizador no menu principal
+
+Carrega os dados dos funcionários a partir do ficheiro
+
+Se a leitura for bem-\/sucedida, atualiza a lista global de funcionários.
+
+Carrega a ementa semanal a partir do ficheiro
+
+Se a leitura for bem-\/sucedida, atualiza a lista global de ementas.
+
+Carrega as escolhas dos utentes a partir do ficheiro
+
+Se a leitura for bem-\/sucedida, atualiza a lista global de escolhas.
+
+Lista as refeições requeridas por dia
+
+Solicita ao utilizador o dia da semana e apresenta as refeições desse dia. Só é possível se todos os dados estiverem carregados.
+
+\texorpdfstring{$<$}{<} Armazena o dia da semana introduzido pelo utilizador
+
+Apresenta o resumo semanal de consumo por utente
+
+Só é possível se todos os dados estiverem carregados.
+
+Consulta as refeições de um utente
+
+Permite ao utilizador consultar refeições por intervalo de datas ou semana completa. Só é possível se todos os dados estiverem carregados.
+
+\texorpdfstring{$<$}{<} Número do funcionário e opção de consulta
+
+\texorpdfstring{$<$}{<} Datas para consulta por intervalo
+
+Calcula as médias de calorias num intervalo de datas
+
+Só é possível se os dados de ementas e escolhas estiverem carregados.
+
+\texorpdfstring{$<$}{<} Datas para o cálculo das médias
+
+Gera a tabela semanal detalhada de um utente
+
+Só é possível se todos os dados estiverem carregados.
+
+\texorpdfstring{$<$}{<} Número do funcionário a consultar
+
+Sai do programa, libertando toda a memória alocada
+
+Opção inválida introduzida pelo utilizador

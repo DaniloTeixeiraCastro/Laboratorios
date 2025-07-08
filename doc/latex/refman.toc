@@ -1,0 +1,143 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {portuges}{}\relax 
+\contentsline {chapter}{\numberline {1}Índice das estruturas de dados}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Estruturas de dados}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Índice dos ficheiros}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Lista de ficheiros}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Documentação da estruturas de dados}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Referência à estrutura Atualizacao\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Valor}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Documentação dos campos e atributos}{5}{subsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.1.1}data\_inicio}{5}{subsubsection.3.1.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.1.2}valor}{5}{subsubsection.3.1.1.2}%
+\contentsline {section}{\numberline {3.2}Referência à estrutura Controle\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Refeicao}{5}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Descrição detalhada}{6}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Documentação dos campos e atributos}{6}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}data\_ultima\_atualizacao}{6}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}valor}{6}{subsubsection.3.2.2.2}%
+\contentsline {section}{\numberline {3.3}Referência à estrutura Ementa}{6}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Descrição detalhada}{6}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Documentação dos campos e atributos}{7}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}data}{7}{subsubsection.3.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.3.2.2}dia}{7}{subsubsection.3.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.3}prato\_carne}{7}{subsubsection.3.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.3.2.4}prato\_dieta}{7}{subsubsection.3.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.3.2.5}prato\_peixe}{7}{subsubsection.3.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.3.2.6}prato\_vegetariano}{7}{subsubsection.3.3.2.6}%
+\contentsline {section}{\numberline {3.4}Referência à estrutura Escolha}{7}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Descrição detalhada}{8}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Documentação dos campos e atributos}{8}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.1}dia}{8}{subsubsection.3.4.2.1}%
+\contentsline {subsubsection}{\numberline {3.4.2.2}num\_funcionario}{8}{subsubsection.3.4.2.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.3}tipo\_prato}{8}{subsubsection.3.4.2.3}%
+\contentsline {section}{\numberline {3.5}Referência à estrutura Funcionario}{8}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Descrição detalhada}{9}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Documentação dos campos e atributos}{9}{subsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.2.1}nif\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{9}{subsubsection.3.5.2.1}%
+\contentsline {subsubsection}{\numberline {3.5.2.2}nif\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{9}{subsubsection.3.5.2.2}%
+\contentsline {subsubsection}{\numberline {3.5.2.3}nome}{9}{subsubsection.3.5.2.3}%
+\contentsline {subsubsection}{\numberline {3.5.2.4}numero}{9}{subsubsection.3.5.2.4}%
+\contentsline {subsubsection}{\numberline {3.5.2.5}telefone\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{9}{subsubsection.3.5.2.5}%
+\contentsline {subsubsection}{\numberline {3.5.2.6}telefone\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{10}{subsubsection.3.5.2.6}%
+\contentsline {section}{\numberline {3.6}Referência à estrutura Node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ementa}{10}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Documentação dos campos e atributos}{10}{subsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.1.1}ementa}{10}{subsubsection.3.6.1.1}%
+\contentsline {subsubsection}{\numberline {3.6.1.2}prox}{10}{subsubsection.3.6.1.2}%
+\contentsline {section}{\numberline {3.7}Referência à estrutura Node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Escolha}{10}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Documentação dos campos e atributos}{11}{subsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.1.1}escolha}{11}{subsubsection.3.7.1.1}%
+\contentsline {subsubsection}{\numberline {3.7.1.2}prox}{11}{subsubsection.3.7.1.2}%
+\contentsline {section}{\numberline {3.8}Referência à estrutura Node\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Func}{11}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Descrição detalhada}{11}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Documentação dos campos e atributos}{11}{subsection.3.8.2}%
+\contentsline {subsubsection}{\numberline {3.8.2.1}func}{11}{subsubsection.3.8.2.1}%
+\contentsline {subsubsection}{\numberline {3.8.2.2}prox}{12}{subsubsection.3.8.2.2}%
+\contentsline {section}{\numberline {3.9}Referência à estrutura Prato}{12}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}Descrição detalhada}{12}{subsection.3.9.1}%
+\contentsline {subsection}{\numberline {3.9.2}Documentação dos campos e atributos}{12}{subsection.3.9.2}%
+\contentsline {subsubsection}{\numberline {3.9.2.1}calorias}{12}{subsubsection.3.9.2.1}%
+\contentsline {subsubsection}{\numberline {3.9.2.2}nome}{12}{subsubsection.3.9.2.2}%
+\contentsline {chapter}{\numberline {4}Documentação do ficheiro}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Referência ao ficheiro src/funcionarios.h}{13}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Descrição detalhada}{14}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Documentação dos tipos}{14}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}NodeFunc}{14}{subsubsection.4.1.2.1}%
+\contentsline {subsection}{\numberline {4.1.3}Documentação das funções}{14}{subsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.3.1}buscarFuncionario()}{14}{subsubsection.4.1.3.1}%
+\contentsline {subsubsection}{\numberline {4.1.3.2}carregarFuncionarios()}{14}{subsubsection.4.1.3.2}%
+\contentsline {subsubsection}{\numberline {4.1.3.3}criarNoFunc()}{15}{subsubsection.4.1.3.3}%
+\contentsline {subsubsection}{\numberline {4.1.3.4}libertarFuncionarios()}{15}{subsubsection.4.1.3.4}%
+\contentsline {subsubsection}{\numberline {4.1.3.5}listarFuncionarios()}{15}{subsubsection.4.1.3.5}%
+\contentsline {subsubsection}{\numberline {4.1.3.6}salvarFuncionarios()}{16}{subsubsection.4.1.3.6}%
+\contentsline {section}{\numberline {4.2}funcionarios.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{16}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Referência ao ficheiro src/include/estruturas.h}{17}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Descrição detalhada}{18}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Documentação das macros}{18}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}LIMITE\_REFEICOES\_DIARIO}{18}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}MAX\_LINE}{19}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}MAX\_NOME}{19}{subsubsection.4.3.2.3}%
+\contentsline {subsection}{\numberline {4.3.3}Documentação dos tipos}{19}{subsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.3.1}NodeEmenta}{19}{subsubsection.4.3.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.3.2}NodeEscolha}{19}{subsubsection.4.3.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3.3}NodeFunc}{19}{subsubsection.4.3.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Documentação das funções}{19}{subsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.1}atualizarEmentas()}{19}{subsubsection.4.3.4.1}%
+\contentsline {subsubsection}{\numberline {4.3.4.2}atualizarValorRefeicao()}{19}{subsubsection.4.3.4.2}%
+\contentsline {subsubsection}{\numberline {4.3.4.3}calcularMediasCalorias()}{20}{subsubsection.4.3.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.4.4}carregarEmentas()}{20}{subsubsection.4.3.4.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.5}carregarEscolhas()}{21}{subsubsection.4.3.4.5}%
+\contentsline {subsubsection}{\numberline {4.3.4.6}carregarFuncionarios()}{21}{subsubsection.4.3.4.6}%
+\contentsline {subsubsection}{\numberline {4.3.4.7}criarNoFunc()}{22}{subsubsection.4.3.4.7}%
+\contentsline {subsubsection}{\numberline {4.3.4.8}gerarTabelaSemanal()}{23}{subsubsection.4.3.4.8}%
+\contentsline {subsubsection}{\numberline {4.3.4.9}gerarTabelaSemanalDetalhada()}{24}{subsubsection.4.3.4.9}%
+\contentsline {subsubsection}{\numberline {4.3.4.10}inicializarControleRefeicoes()}{25}{subsubsection.4.3.4.10}%
+\contentsline {subsubsection}{\numberline {4.3.4.11}libertarMemoria()}{25}{subsubsection.4.3.4.11}%
+\contentsline {subsubsection}{\numberline {4.3.4.12}limparBuffer()}{25}{subsubsection.4.3.4.12}%
+\contentsline {subsubsection}{\numberline {4.3.4.13}listarRefeicoesCalorias()}{25}{subsubsection.4.3.4.13}%
+\contentsline {subsubsection}{\numberline {4.3.4.14}listarRefeicoesDia()}{26}{subsubsection.4.3.4.14}%
+\contentsline {subsubsection}{\numberline {4.3.4.15}listarRefeicoesServidasSemana()}{26}{subsubsection.4.3.4.15}%
+\contentsline {subsubsection}{\numberline {4.3.4.16}mostrarValorRefeicao()}{27}{subsubsection.4.3.4.16}%
+\contentsline {subsubsection}{\numberline {4.3.4.17}obterEmentas()}{27}{subsubsection.4.3.4.17}%
+\contentsline {subsubsection}{\numberline {4.3.4.18}pausar()}{27}{subsubsection.4.3.4.18}%
+\contentsline {subsubsection}{\numberline {4.3.4.19}validarRefeicaoDia()}{27}{subsubsection.4.3.4.19}%
+\contentsline {subsection}{\numberline {4.3.5}Documentação das variáveis}{28}{subsection.4.3.5}%
+\contentsline {subsubsection}{\numberline {4.3.5.1}ementas}{28}{subsubsection.4.3.5.1}%
+\contentsline {subsubsection}{\numberline {4.3.5.2}escolhas}{28}{subsubsection.4.3.5.2}%
+\contentsline {subsubsection}{\numberline {4.3.5.3}funcionarios}{28}{subsubsection.4.3.5.3}%
+\contentsline {section}{\numberline {4.4}estruturas.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{28}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Referência ao ficheiro src/lib/funcoes.c}{30}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Descrição detalhada}{31}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Documentação das macros}{32}{subsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.2.1}MAX\_ATUALIZACOES}{32}{subsubsection.4.5.2.1}%
+\contentsline {subsection}{\numberline {4.5.3}Documentação das funções}{32}{subsection.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.3.1}atualizarEmentas()}{32}{subsubsection.4.5.3.1}%
+\contentsline {subsubsection}{\numberline {4.5.3.2}atualizarValorRefeicao()}{32}{subsubsection.4.5.3.2}%
+\contentsline {subsubsection}{\numberline {4.5.3.3}calcularMediasCalorias()}{32}{subsubsection.4.5.3.3}%
+\contentsline {subsubsection}{\numberline {4.5.3.4}carregarEmentas()}{33}{subsubsection.4.5.3.4}%
+\contentsline {subsubsection}{\numberline {4.5.3.5}carregarEscolhas()}{33}{subsubsection.4.5.3.5}%
+\contentsline {subsubsection}{\numberline {4.5.3.6}carregarFuncionarios()}{33}{subsubsection.4.5.3.6}%
+\contentsline {subsubsection}{\numberline {4.5.3.7}compararDatas()}{34}{subsubsection.4.5.3.7}%
+\contentsline {subsubsection}{\numberline {4.5.3.8}criarNoFunc()}{34}{subsubsection.4.5.3.8}%
+\contentsline {subsubsection}{\numberline {4.5.3.9}gerarTabelaSemanal()}{34}{subsubsection.4.5.3.9}%
+\contentsline {subsubsection}{\numberline {4.5.3.10}gerarTabelaSemanalDetalhada()}{35}{subsubsection.4.5.3.10}%
+\contentsline {subsubsection}{\numberline {4.5.3.11}inicializarControleRefeicoes()}{35}{subsubsection.4.5.3.11}%
+\contentsline {subsubsection}{\numberline {4.5.3.12}libertarMemoria()}{35}{subsubsection.4.5.3.12}%
+\contentsline {subsubsection}{\numberline {4.5.3.13}limparBuffer()}{36}{subsubsection.4.5.3.13}%
+\contentsline {subsubsection}{\numberline {4.5.3.14}listarRefeicoesCalorias()}{36}{subsubsection.4.5.3.14}%
+\contentsline {subsubsection}{\numberline {4.5.3.15}listarRefeicoesDia()}{36}{subsubsection.4.5.3.15}%
+\contentsline {subsubsection}{\numberline {4.5.3.16}listarRefeicoesServidasSemana()}{37}{subsubsection.4.5.3.16}%
+\contentsline {subsubsection}{\numberline {4.5.3.17}mostrarValorRefeicao()}{37}{subsubsection.4.5.3.17}%
+\contentsline {subsubsection}{\numberline {4.5.3.18}obterEmentas()}{37}{subsubsection.4.5.3.18}%
+\contentsline {subsubsection}{\numberline {4.5.3.19}pausar()}{38}{subsubsection.4.5.3.19}%
+\contentsline {subsubsection}{\numberline {4.5.3.20}stricmp()}{38}{subsubsection.4.5.3.20}%
+\contentsline {subsubsection}{\numberline {4.5.3.21}validarRefeicaoDia()}{38}{subsubsection.4.5.3.21}%
+\contentsline {subsection}{\numberline {4.5.4}Documentação das variáveis}{38}{subsection.4.5.4}%
+\contentsline {subsubsection}{\numberline {4.5.4.1}dia\_atual}{38}{subsubsection.4.5.4.1}%
+\contentsline {subsubsection}{\numberline {4.5.4.2}ementas}{38}{subsubsection.4.5.4.2}%
+\contentsline {subsubsection}{\numberline {4.5.4.3}escolhas}{38}{subsubsection.4.5.4.3}%
+\contentsline {subsubsection}{\numberline {4.5.4.4}funcionarios}{39}{subsubsection.4.5.4.4}%
+\contentsline {subsubsection}{\numberline {4.5.4.5}refeicoes\_servidas\_por\_dia}{39}{subsubsection.4.5.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.4.6}valorRefeicao}{39}{subsubsection.4.5.4.6}%
+\contentsline {section}{\numberline {4.6}Referência ao ficheiro src/main.c}{39}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Descrição detalhada}{39}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Documentação das funções}{40}{subsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.2.1}main()}{40}{subsubsection.4.6.2.1}%

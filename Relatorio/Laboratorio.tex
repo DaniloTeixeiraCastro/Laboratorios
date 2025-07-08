@@ -1,0 +1,143 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Relatório do Projeto\newline Laboratório de Informática}
+\author{G36 - Época Especial}
+\date{Julho de 2025}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\chapter{Introdução}
+O presente relatório descreve, de forma detalhada, o desenvolvimento do projeto "Sistema de Gestão do Espaço Social" realizado no âmbito do Laboratório de Informática. O objetivo principal deste sistema é gerir de forma eficiente as refeições servidas a utentes, funcionários e gerir toda a informação associada a ementas, escolhas e controlo de custos.
+
+\section{Contextualização}
+A gestão de refeições em instituições sociais exige rigor, eficiência e flexibilidade. O sistema desenvolvido permite automatizar tarefas como o registo de funcionários, definição de ementas semanais, recolha de escolhas dos utentes e análise estatística do consumo alimentar.
+
+\chapter{Objetivos do Projeto}
+\begin{itemize}
+    \item Permitir o carregamento e gestão de dados de funcionários.
+    \item Gerir ementas semanais, com vários tipos de prato.
+    \item Recolher e analisar as escolhas alimentares dos utentes.
+    \item Listar refeições por dia e por utente.
+    \item Calcular médias de calorias e apresentar resumos semanais.
+    \item Gerar relatórios detalhados e garantir a integridade dos dados.
+\end{itemize}
+
+\chapter{Análise e Estrutura do Sistema}
+O sistema foi desenvolvido em linguagem C, com uma arquitetura modular, separando as funcionalidades em diferentes ficheiros e módulos:
+\begin{itemize}
+    \item \textbf{main.c}: Implementa o menu principal e a lógica de interação com o utilizador.
+    \item \textbf{funcoes.c}: Contém as funções auxiliares e principais para manipulação de dados.
+    \item \textbf{funcionarios.h}: Estruturas e protótipos para gestão de funcionários.
+    \item \textbf{estruturas.h}: Estruturas de dados globais e protótipos de funções.
+\end{itemize}
+
+\section{Estruturas de Dados}
+O sistema utiliza listas ligadas para armazenar funcionários, ementas e escolhas, permitindo flexibilidade na gestão dinâmica dos dados. As principais estruturas são:
+\begin{itemize}
+    \item \textbf{Funcionario}: Número, nome, NIF, telefone.
+    \item \textbf{Ementa}: Dia, data, pratos (carne, peixe, dieta, vegetariano) e calorias.
+    \item \textbf{Escolha}: Dia, número do funcionário, tipo de prato escolhido.
+\end{itemize}
+
+\section{Fluxo de Funcionamento}
+O utilizador interage com o sistema através de um menu textual, podendo carregar dados, consultar informações, gerar relatórios e atualizar valores. O ciclo principal do programa garante que todas as operações críticas só são permitidas após o carregamento dos dados essenciais.
+
+\chapter{Descrição das Funcionalidades}
+\section{Carregamento de Dados}
+\begin{itemize}
+    \item \textbf{Funcionários}: Lidos de ficheiro, validados e armazenados em lista ligada.
+    \item \textbf{Ementas}: Carregadas semanalmente, permitindo atualização dinâmica.
+    \item \textbf{Escolhas}: Importadas de ficheiro, associando cada escolha a um funcionário e a um tipo de prato.
+\end{itemize}
+
+\section{Listagem e Consulta}
+\begin{itemize}
+    \item Listagem de refeições por dia da semana.
+    \item Consulta de refeições de um utente por intervalo de datas ou semana completa.
+    \item Resumo semanal de consumo por utente.
+    \item Geração de tabelas detalhadas para análise alimentar.
+\end{itemize}
+
+\section{Cálculo de Estatísticas}
+\begin{itemize}
+    \item Cálculo de médias de calorias consumidas num dado período.
+    \item Controlo do número máximo de refeições diárias.
+    \item Atualização e consulta do valor da refeição.
+\end{itemize}
+
+\chapter{Principais Funções e Algoritmos}
+\section{Gestão de Listas Ligadas}
+Todas as entidades (funcionários, ementas, escolhas) são geridas por listas ligadas, permitindo inserção, remoção e pesquisa eficiente.
+
+\section{Validação de Dados}
+São implementadas rotinas para validação de datas, limites diários de refeições e integridade dos dados lidos dos ficheiros.
+
+\section{Exemplo de Utilização}
+\begin{verbatim}
+=== Sistema de Gestao do Espaco Social ===
+a. Carregar dados dos funcionarios
+b. Carregar ementa semanal
+c. Carregar escolhas dos utentes
+2. Listar refeicoes requeridas por dia
+3. Resumo semanal de consumo por utente
+4. Consultar refeicoes de um utente
+5. Calcular medias de calorias
+6. Gerar tabela semanal detalhada de um utente
+0. Sair
+
+a) Carregar dados dos funcionários
+b) Carregar ementa semanal
+c) Carregar escolhas dos utentes
+...
+
+digite a opção pretendida...
+\end{verbatim}
+
+\chapter{Resultados e Testes}
+Foram realizados vários testes de carregamento de dados, consulta e geração de relatórios. O sistema demonstrou robustez na validação de dados e flexibilidade na análise estatística.
+
+\section{Dificuldades Encontradas}
+\begin{itemize}
+    \item Garantir a integridade dos dados ao ler ficheiros com diferentes formatos.
+    \item Gerir corretamente a memória dinâmica, evitando fugas de memória.
+    \item Implementar validação rigorosa de datas e limites diários.
+    \item Otimizar a navegação e pesquisa nas listas ligadas.
+\end{itemize}
+
+\chapter{Conclusão}
+O projeto permitiu consolidar conhecimentos de programação em C, gestão de memória, estruturas de dados dinâmicas e documentação técnica. O sistema desenvolvido cumpre todos os requisitos propostos, sendo facilmente extensível e adaptável a novas funcionalidades.
+
+\section{Trabalho Futuro}
+\begin{itemize}
+    \item Implementação de interface gráfica.
+    \item Integração com base de dados relacional.
+    \item Exportação de relatórios em formatos PDF/Excel.
+    \item Otimização de algoritmos para grandes volumes de dados.
+\end{itemize}
+
+\chapter{Anexos}
+\section{Estruturas de Dados}
+\begin{verbatim}
+// Exemplo de estrutura Funcionario
+typedef struct {
+    int numero;
+    char nome[MAX_NOME];
+    int nif;
+    int telefone;
+} Funcionario;
+\end{verbatim}
+
+\section{Documentação Automática}
+A documentação técnica detalhada do código-fonte foi gerada automaticamente com Doxygen e encontra-se disponível na pasta \texttt{doc}.
+
+\end{document}
