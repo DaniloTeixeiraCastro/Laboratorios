@@ -10,25 +10,23 @@
 - [Equipa](#equipa)
 
 ## 🎯 Sobre o Projecto
-Este projecto foi desenvolvido no âmbito da unidade curricular de Laboratórios de Informática do curso de Engenharia de Sistemas Informáticos no Instituto Politécnico do Cávado e do Ave. Consiste num sistema de gestão para um espaço social, permitindo a administração eficiente de funcionários, ementas e escolhas de refeições.
+Este projecto foi desenvolvido no âmbito da unidade curricular de Laboratórios de Informática do curso de Engenharia de Sistemas Informáticos no Instituto Politécnico do Cávado e do Ave. Consiste num sistema de gestão para um espaço social, permitindo a gestão eficiente de funcionários, ementas e escolhas de refeições.
 
 ## ⚙️ Funcionalidades
 ### Gestão de Funcionários
-- Registo e gestão de dados dos funcionários
-- Consulta de informações pessoais
-- Actualização de registos
+- Carregamento de dados dos funcionários
 
 ### Gestão de Ementas
 - Carregamento de ementas semanais
-- Visualização de refeições disponíveis
+- Visualização de refeições requeridas e disponíveis
 - Gestão do planeamento alimentar
 
 ### Sistema de Refeições
-- Registo de escolhas dos utentes
+- Carregamento das escolhas dos utentes
 - Listagem de refeições por dia
 - Consulta personalizada por utente
-- Relatórios por intervalo de datas
-- Estatísticas semanais
+- Relatórios semanais e por intervalo de datas
+- Estatísticas sobre a média de calorias consumidas
 
 
 ## 🛠️ Tecnologias Utilizadas
@@ -62,12 +60,12 @@ Este projecto foi desenvolvido no âmbito da unidade curricular de Laboratórios
 
 O projeto possui dois Makefiles:
 1. `src/Makefile`: Para compilar o programa em C
-2. `doc/Relatorio LaTeX/Makefile`: Para compilar o relatório em LaTeX
+2. `doc/latex/Makefile`: Para compilar o relatório em LaTeX
 
-#### Compilar o Programa (pasta src)
+#### Compilar o Programa (pasta raiz do projeto)
 ```bash
-# Naveguar até a pasta src
-cd src
+# Navegar até a pasta raiz do projeto
+cd Laboratorios
 
 # Compilar o programa
 mingw32-make
@@ -82,10 +80,10 @@ mingw32-make rebuild
 mingw32-make run
 ```
 
-#### Compilar o Relatório (pasta doc/Relatorio LaTeX)
+#### Compilar o Relatório (pasta doc/latex)
 ```bash
 # Naveguar até a pasta do relatório
-cd doc/Relatorio\ LaTeX
+cd doc/latex
 
 # Compilar o PDF
 mingw32-make
@@ -102,21 +100,31 @@ mingw32-make rebuild
 ### 📁 Estrutura do Projeto
 ```
 .
-├── doc/                    # Documentação com o relatório
-│   └── Relatorio LaTeX/   # Relatório em LaTeX
-│       ├── Relatorio.tex  # Código fonte do relatório
-│       └── Makefile       # Makefile para compilar o relatório
-├── doxdoc/                # Documentação gerada pelo Doxygen
+├── doc/                   # Documentação com o relatório
+│   ├── html/              # Documentação em HTML
+│   │   └── index.html     # Página inicial da documentação
+│   └── latex/             # Documentação em LaTeX
+│       ├── Makefile       # Makefile para compilar o relatório LaTeX
+│       └── refman.pdf     # Documentação em PDF do relatório LaTeX
+├── data/                  # Arquivos de dados
+│   ├── funcionarios.txt   # Dados dos funcionários
+│   ├── ementas.txt        # Ementas semanais
+│   └── menu_escolhido.txt # Escolhas dos utentes
+├── Relatorio/             # Documentação gerada pelo Doxygen
+│   └── Laboratorio.pdf    # Documentação em PDF
+├── Makefile               # Makefile principal para compilar e executar o projeto
 └── src/                   # Código fonte da solução
     ├── include/           # Arquivos de cabeçalho (.h)
+    │   └── estruturas.h   # Definições das estruturas de dados
     ├── lib/               # Bibliotecas
-    ├── Makefile          # Makefile para compilar o programa
-    └── build/            # Arquivos compilados (gerado automaticamente)
+    │   └── funcoes.c      # Implementação das funções
+    └── main.c             # Programa principal
 ```
 
-## 👥 Equipa
-- Pedro Vilas Boas (nº25453)
-- Ricardo Marques (nº25447)
+## 👥 Equipa - grupo *36*
+- Filipe Ferreira (25275)
+- Danilo Castro (25447)
+- Vitor Leite (25453)
 
 ## 📝 Notas Adicionais
 - O sistema foi desenvolvido com foco na eficiência e facilidade de utilização

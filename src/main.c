@@ -23,7 +23,7 @@
  *  - Carregar a ementa semanal
  *  - Carregar as escolhas dos utentes
  *  - Listar refeições requeridas por dia
- *  - Apresentar o resumo semanal de consumo por utente
+ *  - Apresentar o resumo semanal de consumo dos utente
  *  - Consultar refeições de um utente
  *  - Calcular médias de calorias
  *  - Gerar tabela semanal detalhada de um utente
