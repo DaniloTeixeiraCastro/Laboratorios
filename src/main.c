@@ -40,19 +40,20 @@ int main() {
     do {
         // Limpa o ecrã para melhor apresentação do menu
         system("cls");
-        printf("\n=== Sistema de Gestao do Espaco Social ===\n");
-        printf("------------------------------------------\n");
-        printf("a. Carregar dados dos funcionarios\n");
-        printf("b. Carregar ementa semanal\n");
-        printf("c. Carregar escolhas dos utentes\n");
-        printf("2. Listar refeicoes requeridas por dia\n");
-        printf("3. Resumo semanal de consumo por utente\n");
-        printf("4. Consultar refeicoes de um utente\n");
-        printf("5. Calcular medias de calorias\n");
-        printf("6. Gerar tabela semanal detalhada de um utente\n");
-        printf("0. Sair\n");
-        printf("------------------------------------------\n");
-        printf("Escolha uma opcao: ");
+        printf("\n|*************************************************|\n");
+        printf("|       Sistema de Gestao do Espaco Social        |\n");
+        printf("|*************************************************|\n");
+        printf("| a. Carregar dados dos funcionarios              |\n");
+        printf("| b. Carregar ementa semanal                      |\n");
+        printf("| c. Carregar escolhas dos utentes                |\n");
+        printf("| 2. Listar refeicoes requeridas por dia          |\n");
+        printf("| 3. Resumo semanal de consumo dos utentes        |\n");
+        printf("| 4. Consultar refeicoes de um utente             |\n");
+        printf("| 5. Calcular medias de calorias                  |\n");
+        printf("| 6. Gerar tabela semanal detalhada de um utente  |\n");
+        printf("| 0. Sair do programa                             |\n");
+        printf("|_________________________________________________|\n");
+        printf("\nEscolha uma opcao: ");
         // Lê a opção do utilizador (aceita letras e números)
         scanf(" %c", &opcao);
         limparBuffer();
@@ -169,7 +170,8 @@ int main() {
                     scanf("%s", data_inicio);
                     printf("Digite a data final (DD.MM.AAAA): ");
                     scanf("%s", data_fim);
-                    listarRefeicoesCalorias(funcionarios, ementas, escolhas, num_func, data_inicio, data_fim);
+                    listarRefeicoesCalorias(funcionarios, ementas, escolhas, num_func, data_inicio, data_fim);                
+                    limparBuffer();
                 } else if (opcao_consulta == 2) {
                     gerarTabelaSemanal(funcionarios, ementas, escolhas, num_func);
                 } else {

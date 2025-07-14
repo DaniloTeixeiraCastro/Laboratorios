@@ -614,22 +614,22 @@ void libertarMemoria(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha* e
                 }
                 if (func_atual != NULL) {
                     // Determina o nome do prato escolhido
-                    const char* nome_prato = "";
+                    char nome_prato[50];
                     switch (escolha_atual->escolha.tipo_prato) {
                         case 'C':
-                            nome_prato = ementa_atual->ementa.prato_carne.nome;
+                            sprintf(nome_prato, "%s (C)", ementa_atual->ementa.prato_carne.nome);
                             break;
                         case 'P':
-                            nome_prato = ementa_atual->ementa.prato_peixe.nome;
+                            sprintf(nome_prato, "%s (P)", ementa_atual->ementa.prato_peixe.nome);
                             break;
                         case 'D':
-                            nome_prato = ementa_atual->ementa.prato_dieta.nome;
+                            sprintf(nome_prato, "%s (D)", ementa_atual->ementa.prato_dieta.nome);
                             break;
                         case 'V':
-                            nome_prato = ementa_atual->ementa.prato_vegetariano.nome;
+                            sprintf(nome_prato, "%s (V)", ementa_atual->ementa.prato_vegetariano.nome);
                             break;
                         default:
-                            nome_prato = "Prato não especificado";
+                            strcpy(nome_prato, "Prato não especificado");
                     }
                     
                     printf("| %-6d | %-20s | %-27s |\n", 
@@ -794,51 +794,68 @@ void listarRefeicoesCalorias(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEs
         printf("Funcionario nao encontrado.\n");
         return;
     }
-
-    printf("\n=== Refeicoes e Calorias do Funcionario %d - %s ===\n", 
+    printf("_____________________________________________________\n");
+    printf("\n Ementa no intervalo de datas do Funcionario %d - %s \n", 
            num_funcionario, func->func.nome);
-    printf("Dia    | Prato                  | Calorias\n");
-    printf("------------------------------------------\n");
+    printf("\n+---------------------------------------------------+\n");
+    printf("| Dia     | Prato                        | Calorias |\n");
+    printf("+---------------------------------------------------+\n");
 
+    NodeEscolha* escolha = escolhas;
     int total_calorias = 0;
     int total_refeicoes = 0;
 
-    NodeEscolha* escolha = escolhas;
     while (escolha) {
         if (escolha->escolha.num_funcionario == num_funcionario) {
             NodeEmenta* ementa = ementas;
             while (ementa) {
-                if (strcmp(ementa->ementa.dia, escolha->escolha.dia) == 0) {
-                    const char* nome_prato;
-                    int calorias;
-
-                    if (escolha->escolha.tipo_prato == 'C') {
-                        nome_prato = ementa->ementa.prato_carne.nome;
-                        calorias = ementa->ementa.prato_carne.calorias;
-                    } else {
-                        nome_prato = ementa->ementa.prato_peixe.nome;
-                        calorias = ementa->ementa.prato_peixe.calorias;
-                    }
-
-                    printf("%-6s | %-20s | %d\n",
+                // Verificar se a data está dentro do intervalo
+                int cmp_inicio = compararDatas(ementa->ementa.data, data_inicio);
+                int cmp_fim = compararDatas(ementa->ementa.data, data_fim);
+                
+                if (cmp_inicio >= 0 && cmp_fim <= 0) {
+                    if (strcmp(escolha->escolha.dia, ementa->ementa.dia) == 0) {
+                        int calorias = 0;
+                        char nome_prato[50];
+                        
+                        switch(escolha->escolha.tipo_prato) {
+                            case 'P':
+                                sprintf(nome_prato, "%s (P)", ementa->ementa.prato_peixe.nome);
+                                calorias = ementa->ementa.prato_peixe.calorias;
+                                break;
+                            case 'C':
+                                sprintf(nome_prato, "%s (C)", ementa->ementa.prato_carne.nome);
+                                calorias = ementa->ementa.prato_carne.calorias;
+                                break;
+                            case 'D':
+                                sprintf(nome_prato, "%s (D)", ementa->ementa.prato_dieta.nome);
+                                calorias = ementa->ementa.prato_dieta.calorias;
+                                break;
+                            case 'V':
+                                sprintf(nome_prato, "%s (V)", ementa->ementa.prato_vegetariano.nome);
+                                calorias = ementa->ementa.prato_vegetariano.calorias;
+                                break;
+                        }
+                        
+                        printf("| %-7s | %-28s | %-8d |\n",
                            ementa->ementa.dia,
                            nome_prato,
                            calorias);
                     
-                    total_calorias += calorias;
-                    total_refeicoes++;
-                    break;
+                        total_calorias += calorias;
+                        total_refeicoes++;
+                        break;
+                    }
                 }
                 ementa = ementa->prox;
             }
         }
         escolha = escolha->prox;
     }
-
-    printf("------------------------------------------\n");
-    printf("Total de refeicoes: %d\n", total_refeicoes);
-    printf("Media de calorias: %.2f\n", total_refeicoes > 0 ? (float)total_calorias/total_refeicoes : 0);
-    printf("------------------------------------------\n");
+    printf("+---------------------------------------------------+\n");
+    printf("\nTotal de refeicoes no intervalo de datas: %d\n", total_refeicoes);
+    printf("Media de calorias consumidas no intervalo de datas: %.2f\n", total_refeicoes > 0 ? (float)total_calorias/total_refeicoes : 0);
+    printf("_____________________________________________________\n");
 }
 
 /**
@@ -851,9 +868,20 @@ void listarRefeicoesCalorias(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEs
  */
 void calcularMediasCalorias(NodeEmenta* ementas, NodeEscolha* escolhas, 
                            const char* data_inicio, const char* data_fim) {
-    printf("\n=== Media de Calorias por Dia ===\n");
-    printf("Dia    | Media de Calorias\n");
-    printf("---------------------------\n");
+    // Verifica se as listas não são nulas
+    if (!ementas || !escolhas) {
+        printf("Erro: Lista de ementas ou escolhas nao inicializada!\n");
+        return;
+    }
+
+    printf("-------------------------------------------------\n");
+    printf(" Media de Calorias consumidas por Dia\n");
+    printf("_________________________________\n");
+    printf("|Dia    | Media de Calorias     |\n");
+    printf("|-------------------------------|\n");
+
+    float soma_medias = 0;
+    int num_dias = 0;
 
     NodeEmenta* ementa = ementas;
     while (ementa) {
@@ -861,7 +889,7 @@ void calcularMediasCalorias(NodeEmenta* ementas, NodeEscolha* escolhas,
         if (compararDatas(ementa->ementa.data, data_inicio) >= 0 && 
             compararDatas(ementa->ementa.data, data_fim) <= 0) {
             
-            int total_calorias = 0;
+            int total_calorias_dia = 0;
             int num_refeicoes = 0;
 
             NodeEscolha* escolha = escolhas;
@@ -870,16 +898,16 @@ void calcularMediasCalorias(NodeEmenta* ementas, NodeEscolha* escolhas,
                     // Calcula as calorias baseado no tipo de prato escolhido
                     switch(escolha->escolha.tipo_prato) {
                         case 'C':
-                            total_calorias += ementa->ementa.prato_carne.calorias;
+                            total_calorias_dia += ementa->ementa.prato_carne.calorias;
                             break;
                         case 'P':
-                            total_calorias += ementa->ementa.prato_peixe.calorias;
+                            total_calorias_dia += ementa->ementa.prato_peixe.calorias;
                             break;
                         case 'V':
-                            total_calorias += ementa->ementa.prato_vegetariano.calorias;
+                            total_calorias_dia += ementa->ementa.prato_vegetariano.calorias;
                             break;
                         case 'D':
-                            total_calorias += ementa->ementa.prato_dieta.calorias;
+                            total_calorias_dia += ementa->ementa.prato_dieta.calorias;
                             break;
                     }
                     num_refeicoes++;
@@ -889,13 +917,34 @@ void calcularMediasCalorias(NodeEmenta* ementas, NodeEscolha* escolhas,
 
             if (num_refeicoes > 0) {
                 // Calcula a média considerando apenas as refeições consumidas
-                float media = (float)total_calorias / num_refeicoes;
-                printf("%-6s | %.2f\n", ementa->ementa.dia, media);
+                float media = (float)total_calorias_dia / num_refeicoes;
+                printf("|%-6s | %-21.2f |\n", ementa->ementa.dia, media);
+                // Acumula a média diária
+                soma_medias += media;
+                num_dias++;  // Conta o número de dias com refeições dentro do periodo selecionado
             }
         }
         ementa = ementa->prox;
     }
-    printf("---------------------------\n");
+    printf("|_______________________________|\n");
+
+    // Se não houver ementas no intervalo
+    if (num_dias == 0) {
+        printf(" Nenhuma refeicao registada no intervalo\n");
+        printf("-------------------------------------------------\n");
+        return;
+    }
+
+    // Calcular média geral do intervalo
+    if (num_dias > 0) {
+        // Calcula a média geral como a média das médias diárias
+        float media_geral = soma_medias / num_dias;
+        printf("\n Media de calorias do intervalo de datas: %.2f \n", media_geral);
+        printf("-------------------------------------------------\n");
+    } else {
+        printf(" Nenhuma refeicao registrada no intervalo\n");
+        printf("-------------------------------------------------\n");
+    }
 }
 
 /**
@@ -916,52 +965,71 @@ void gerarTabelaSemanal(NodeFunc* funcionarios, NodeEmenta* ementas, NodeEscolha
         printf("Funcionario nao encontrado.\n");
         return;
     }
-
-    printf("\n=== Ementa Semanal do Funcionario %d - %s ===\n", 
-           num_funcionario, func->func.nome);
-    printf("------------------------------------------\n");
-    printf("Dia    | Prato                  | Calorias\n");
-    printf("------------------------------------------\n");
+    printf("______________________________________________________\n");
+    printf("\n Ementa Semanal do Funcionario %d - %s \n", 
+           num_funcionario, func->func.nome);    
+    printf("\n+---------------------------------------------------+\n");
+    printf("| Dia     | Prato                        | Calorias |\n");
+    printf("+---------------------------------------------------+\n");
 
     NodeEmenta* ementa = ementas;
+    int total_calorias = 0;
+    int total_refeicoes = 0;
+
     while (ementa) {
         NodeEscolha* escolha = escolhas;
         while (escolha) {
             if (escolha->escolha.num_funcionario == num_funcionario &&
                 strcmp(escolha->escolha.dia, ementa->ementa.dia) == 0) {
+                int calorias = 0;
                 switch(escolha->escolha.tipo_prato) {
                     case 'C':
-                        printf("%-6s | %-20s | %d\n",
-                               ementa->ementa.dia,
-                               ementa->ementa.prato_carne.nome,
-                               ementa->ementa.prato_carne.calorias);
+                        calorias = ementa->ementa.prato_carne.calorias;
                         break;
                     case 'P':
-                        printf("%-6s | %-20s | %d\n",
-                               ementa->ementa.dia,
-                               ementa->ementa.prato_peixe.nome,
-                               ementa->ementa.prato_peixe.calorias);
+                        calorias = ementa->ementa.prato_peixe.calorias;
                         break;
                     case 'V':
-                        printf("%-6s | %-20s | %d\n",
-                               ementa->ementa.dia,
-                               ementa->ementa.prato_vegetariano.nome,
-                               ementa->ementa.prato_vegetariano.calorias);
+                        calorias = ementa->ementa.prato_vegetariano.calorias;
                         break;
                     case 'D':
-                        printf("%-6s | %-20s | %d\n",
-                               ementa->ementa.dia,
-                               ementa->ementa.prato_dieta.nome,
-                               ementa->ementa.prato_dieta.calorias);
+                        calorias = ementa->ementa.prato_dieta.calorias;
                         break;
                 }
+                
+                char nome_prato[50];
+                switch(escolha->escolha.tipo_prato) {
+                    case 'C':
+                        sprintf(nome_prato, "%s (C)", ementa->ementa.prato_carne.nome);
+                        break;
+                    case 'P':
+                        sprintf(nome_prato, "%s (P)", ementa->ementa.prato_peixe.nome);
+                        break;
+                    case 'V':
+                        sprintf(nome_prato, "%s (V)", ementa->ementa.prato_vegetariano.nome);
+                        break;
+                    case 'D':
+                        sprintf(nome_prato, "%s (D)", ementa->ementa.prato_dieta.nome);
+                        break;
+                }
+                printf("| %-7s | %-28s | %-8d |\n",
+                       ementa->ementa.dia,
+                       nome_prato,
+                       calorias);
+
+                total_calorias += calorias;
+                total_refeicoes++;
                 break;
             }
             escolha = escolha->prox;
         }
         ementa = ementa->prox;
     }
-    printf("------------------------------------------\n");
+
+    printf("+---------------------------------------------------+\n");
+    printf("\nTotal de refeicoes na semana: %d\n", total_refeicoes);
+    printf("Media de calorias consumidas na semana: %.2f\n", total_refeicoes > 0 ? (float)total_calorias/total_refeicoes : 0);
+    printf("_____________________________________________________\n");
 }
 
 /**
@@ -986,7 +1054,7 @@ void gerarTabelaSemanalDetalhada(NodeFunc* funcionarios, NodeEmenta* ementas, No
     printf(" __________________________________________________________________________\n");
     printf("\n+================================================================================================================================================+\n");
     printf("| %-7s| %-24s| %5s | %-24s| %5s | %-24s| %5s | %-24s| %5s |\n",
-        "Dia", "Peixe", "Cal.", "Carne", "Cal.", "Dieta", "Cal.", "Vegetariano", "Cal.");
+        "Dia", "Prato Peixe", "Cal.", "Prato Carne", "Cal.", "Prato Dieta", "Cal.", "Prato Vegetariano", "Cal.");
     printf("+================================================================================================================================================+\n");
     for (int i = 0; i < 5; i++) {
         NodeEmenta* ementa = ementas;
