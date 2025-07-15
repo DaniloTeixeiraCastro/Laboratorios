@@ -28,13 +28,15 @@ Este projecto foi desenvolvido no âmbito da unidade curricular de Laboratórios
 - Relatórios semanais e por intervalo de datas
 - Estatísticas sobre a média de calorias consumidas
 
-
 ## 🛠️ Tecnologias Utilizadas
 - Linguagem C
 - Bibliotecas standard C
 - Estruturas de dados dinâmicas (listas ligadas)
 - Sistema de ficheiros para persistência de dados
-- LaTeX para documentação técnica
+- Modularização do código, organizado em ficheiros .h e .c
+- Makefile para compilação e execução
+- Doxygen para documentação técnica
+- LaTeX para documentação em PDF
 
 ## 📝 Instalação e Execução
 
@@ -110,6 +112,7 @@ mingw32-make rebuild
 │   ├── funcionarios.txt   # Dados dos funcionários
 │   ├── ementas.txt        # Ementas semanais
 │   └── menu_escolhido.txt # Escolhas dos utentes
+├── Doxyfile              # Configuração do Doxygen para documentação
 ├── Relatorio/             # Documentação gerada pelo Doxygen
 │   └── Laboratorio.pdf    # Documentação em PDF
 ├── Makefile               # Makefile principal para compilar e executar o projeto
@@ -126,8 +129,14 @@ mingw32-make rebuild
 - Danilo Castro (25447)
 - Vitor Leite (25453)
 
-## 📝 Notas Adicionais
-- O sistema foi desenvolvido com foco na eficiência e facilidade de utilização
-- Implementa boas práticas de programação e gestão de memória
-- Inclui validação de dados e tratamento de erros
-- Documentação técnica completa disponível no relatório em LaTeX
+## 🤝 Estratégia de Colaboração e Divisão de Tarefas
+O desenvolvimento do projeto foi realizado de forma colaborativa, utilizando o repositório Git para garantir o versionamento e integração contínua do código. As tarefas foram distribuídas da seguinte forma:
+
+- **Filipe Ferreira:** Estruturas de dados, funções de manipulação de listas ligadas, validação de dados e documentação técnica (Doxygen).
+- **Danilo Castro:** Implementação do menu principal, integração das funcionalidades, testes de carregamento de dados e geração de relatórios.
+- **Vitor Leite:** Gestão de ementas e escolhas, estatísticas, tratamento de ficheiros e documentação em LaTeX.
+
+O grupo utilizou branches para desenvolvimento paralelo, revisões de código via pull requests e reuniões semanais para alinhamento das tarefas. A integração das contribuições foi feita através de merges frequentes, garantindo que todos os membros participassem ativamente em todas as fases do projeto.
+
+## 🏁 Conclusão
+O projeto permitiu consolidar conhecimentos de programação em C, gestão de memória, modularização, documentação técnica e colaboração em equipa. O sistema desenvolvido cumpre os requisitos propostos, apresenta robustez na validação de dados e flexibilidade na análise estatística. O uso de ferramentas como Git, Doxygen e LaTeX contribuiu para a organização, qualidade e apresentação do trabalho.

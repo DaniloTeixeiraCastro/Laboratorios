@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.7.8)  8 JUL 2025 23:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.7.8)  15 JUL 2025 23:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -374,63 +374,105 @@ Package hyperref Info: Link coloring OFF on input line 15.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 18.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 18.
 [1
 
 {C:/Users/vitor/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 (Laboratorio.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 3.
+(Font)              <12> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 3.
+(Font)              <8> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 3.
+(Font)              <6> on input line 4.
 )
 \tf@toc=\write4
 \openout4 = `Laboratorio.toc'.
 
+ [2
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.19 \chapter
-             {Introdução} [1
+] (Laboratorio.lof
+Overfull \hbox (22.2553pt too wide) detected at line 10
+\OT1/cmr/m/n/12 Imagem 1 
+ []
+
+
+Overfull \hbox (22.2553pt too wide) detected at line 11
+\OT1/cmr/m/n/12 Imagem 2 
+ []
+
+
+Overfull \hbox (22.2553pt too wide) detected at line 12
+\OT1/cmr/m/n/12 Imagem 3 
+ []
+
+)
+\tf@lof=\write5
+\openout5 = `Laboratorio.lof'.
+
+ [3
+
 
 ]
 Cap\'{\i }tulo 1.
-[2
+[4
+
 
 ]
 Cap\'{\i }tulo 2.
-[3
-
-]
-Cap\'{\i }tulo 3.
-[4
-
-]
-Cap\'{\i }tulo 4.
 [5
 
 ]
-Cap\'{\i }tulo 5.
+Cap\'{\i }tulo 3.
 [6
 
-]
-Cap\'{\i }tulo 6.
-[7
-
-]
-Cap\'{\i }tulo 7.
+] [7]
+Cap\'{\i }tulo 4.
 [8
 
 ]
-Cap\'{\i }tulo 8.
+Cap\'{\i }tulo 5.
 [9
+
+]
+Cap\'{\i }tulo 6.
+[10
+
+]
+Cap\'{\i }tulo 7.
+[11
+
+]
+Cap\'{\i }tulo 8.
+<c:/Users/vitor/Desktop/Tabela_1.jpg, id=212, 883.80188pt x 207.77625pt>
+File: c:/Users/vitor/Desktop/Tabela_1.jpg Graphic file (type jpg)
+<use c:/Users/vitor/Desktop/Tabela_1.jpg>
+Package pdftex.def Info: c:/Users/vitor/Desktop/Tabela_1.jpg  used on input lin
+e 171.
+(pdftex.def)             Requested size: 432.48051pt x 101.67491pt.
+<c:/Users/vitor/Desktop/tabela_2.jpg, id=213, 309.40594pt x 201.00093pt>
+File: c:/Users/vitor/Desktop/tabela_2.jpg Graphic file (type jpg)
+<use c:/Users/vitor/Desktop/tabela_2.jpg>
+Package pdftex.def Info: c:/Users/vitor/Desktop/tabela_2.jpg  used on input lin
+e 184.
+(pdftex.def)             Requested size: 273.14923pt x 177.46408pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<c:/Users/vitor/Desktop/tabela_3.jpg, id=214, 376.40625pt x 275.52937pt>
+File: c:/Users/vitor/Desktop/tabela_3.jpg Graphic file (type jpg)
+<use c:/Users/vitor/Desktop/tabela_3.jpg>
+Package pdftex.def Info: c:/Users/vitor/Desktop/tabela_3.jpg  used on input lin
+e 195.
+(pdftex.def)             Requested size: 318.66948pt x 233.28453pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[12
+
+ <c:/Users/vitor/Desktop/Tabela_1.jpg>] [13 <c:/Users/vitor/Desktop/tabela_2.jp
+g> <c:/Users/vitor/Desktop/tabela_3.jpg>]
+Cap\'{\i }tulo 9.
+[14
 
 ] (Laboratorio.aux)
  ***********
@@ -438,25 +480,25 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Laboratorio.out' has not changed.
-(rerunfilecheck)             Checksum: 7B6742A5D7F40DEDC0ACC0D0D2721705;3313.
+(rerunfilecheck)             Checksum: 3B1B5C40E0A0D39BDC1ADF4FE47B3CDE;5152.
  ) 
 Here is how much of TeX's memory you used:
- 11456 strings out of 474486
- 182283 string characters out of 5743756
- 1933542 words of memory out of 5000000
- 33590 multiletter control sequences out of 15000+600000
- 564042 words of font info for 56 fonts, out of 8000000 for 9000
+ 11509 strings out of 474486
+ 183532 string characters out of 5743756
+ 1936542 words of memory out of 5000000
+ 33623 multiletter control sequences out of 15000+600000
+ 563427 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,79p,406b,471s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,7n,79p,426b,522s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\vitor\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><C:/Users/vitor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/vitor/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmr12.pfb><C:/Users/vitor/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmr17.pfb><C:/Users/vitor/AppData/Local/Programs/MiKTeX/
 fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Laboratorio.pdf (10 pages, 89800 bytes).
+Output written on Laboratorio.pdf (14 pages, 311517 bytes).
 PDF statistics:
- 186 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 264 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
+ 256 words of extra memory for PDF output out of 10000 (max. 10000000)
 

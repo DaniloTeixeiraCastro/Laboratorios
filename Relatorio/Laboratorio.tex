@@ -8,16 +8,30 @@
 \usepackage{geometry}
 \geometry{margin=2.5cm}
 
-\title{Relatório do Projeto\newline Laboratório de Informática}
-\author{G36 - Época Especial}
+\title{Relatório do Projeto\newline Laboratórios de Informática}
+\author{\begin{center}25275 - Filipe Ferreira\\25446 - Vítor Leite\\25457 - Danilo Castro\end{center}}
 \date{Julho de 2025}
 
 \begin{document}
 
-\maketitle
+{\begin{center}
+    \vspace*{2cm}
+    {\Huge \textbf{Relatório do Projeto}}\\[0.5cm]
+    {\LARGE Laboratórios de Informática}\\[1cm]
+    {\large 25275 - Filipe Ferreira}\\
+    {\large 25446 - Vítor Leite}\\
+    {\large 25457 - Danilo Castro}\\[1cm]
+    {\large Julho de 2025}
+    \vspace*{2cm}
+\end{center}}
 \tableofcontents
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Lista de Imagens}
+\renewcommand{\thefigure}{Imagem \arabic{figure}}
+\listoffigures
+\cleardoublepage
 \chapter{Introdução}
-O presente relatório descreve, de forma detalhada, o desenvolvimento do projeto "Sistema de Gestão do Espaço Social" realizado no âmbito do Laboratório de Informática. O objetivo principal deste sistema é gerir de forma eficiente as refeições servidas a utentes, funcionários e gerir toda a informação associada a ementas, escolhas e controlo de custos.
+O presente relatório descreve, de forma detalhada, o desenvolvimento do projeto "Sistema de Gestão do Espaço Social" realizado no âmbito da Unidade Curricular Laboratórios de Informática. O objetivo principal deste sistema é gerir de forma eficiente as refeições servidas a utentes, funcionários e gerir toda a informação associada a ementas, escolhas e controlo de custos.
 
 \section{Contextualização}
 A gestão de refeições em instituições sociais exige rigor, eficiência e flexibilidade. O sistema desenvolvido permite automatizar tarefas como o registo de funcionários, definição de ementas semanais, recolha de escolhas dos utentes e análise estatística do consumo alimentar.
@@ -37,9 +51,17 @@ O sistema foi desenvolvido em linguagem C, com uma arquitetura modular, separand
 \begin{itemize}
     \item \textbf{main.c}: Implementa o menu principal e a lógica de interação com o utilizador.
     \item \textbf{funcoes.c}: Contém as funções auxiliares e principais para manipulação de dados.
-    \item \textbf{funcionarios.h}: Estruturas e protótipos para gestão de funcionários.
     \item \textbf{estruturas.h}: Estruturas de dados globais e protótipos de funções.
 \end{itemize}
+
+\section{Processo de Desenvolvimento}
+O desenvolvimento seguiu uma abordagem incremental, começando pela definição dos requisitos e desenho das estruturas de dados. Foram realizadas reuniões semanais para revisão do progresso e discussão de problemas encontrados. O código foi documentado e testado em cada etapa, garantindo qualidade e facilidade de manutenção.
+
+\section{Segurança e Privacidade dos Dados}
+O sistema implementa validações rigorosas para garantir que apenas dados válidos são carregados e processados. Os ficheiros de dados são protegidos contra acessos indevidos e alterações não autorizadas. Recomenda-se a implementação futura de mecanismos de encriptação e controlo de acessos para reforçar a privacidade dos utentes e funcionários.
+
+\section{Considerações Éticas}
+A gestão de dados pessoais exige responsabilidade. O sistema foi desenhado para minimizar a exposição de dados sensíveis, como NIF e contactos, e para garantir que apenas utilizadores autorizados possam aceder a informações críticas. Futuras versões poderão incluir anonimização de dados para relatórios estatísticos.
 
 \section{Estruturas de Dados}
 O sistema utiliza listas ligadas para armazenar funcionários, ementas e escolhas, permitindo flexibilidade na gestão dinâmica dos dados. As principais estruturas são:
@@ -65,7 +87,7 @@ O utilizador interage com o sistema através de um menu textual, podendo carrega
     \item Listagem de refeições por dia da semana.
     \item Consulta de refeições de um utente por intervalo de datas ou semana completa.
     \item Resumo semanal de consumo por utente.
-    \item Geração de tabelas detalhadas para análise alimentar.
+    \item Criação de tabelas detalhadas para análise alimentar.
 \end{itemize}
 
 \section{Cálculo de Estatísticas}
@@ -103,28 +125,27 @@ c) Carregar escolhas dos utentes
 digite a opção pretendida...
 \end{verbatim}
 
+
 \chapter{Resultados e Testes}
-Foram realizados vários testes de carregamento de dados, consulta e geração de relatórios. O sistema demonstrou robustez na validação de dados e flexibilidade na análise estatística.
+Foram realizados vários testes de carregamento de dados, consulta e criação de relatórios. O sistema demonstrou robustez na validação de dados e flexibilidade na análise estatística.
 
-\section{Dificuldades Encontradas}
+\section{Exemplos de Testes Realizados}
 \begin{itemize}
-    \item Garantir a integridade dos dados ao ler ficheiros com diferentes formatos.
-    \item Gerir corretamente a memória dinâmica, evitando fugas de memória.
-    \item Implementar validação rigorosa de datas e limites diários.
-    \item Otimizar a navegação e pesquisa nas listas ligadas.
+    \item Teste de carregamento de ficheiros com dados inválidos e verificação da rejeição correta.
+    \item Teste de inserção e remoção de funcionários e verificação da integridade da lista ligada.
+    \item Teste de criação de relatórios semanais para diferentes utentes.
+    \item Teste de cálculo de médias de calorias em diferentes intervalos de datas.
 \end{itemize}
 
-\chapter{Conclusão}
-O projeto permitiu consolidar conhecimentos de programação em C, gestão de memória, estruturas de dados dinâmicas e documentação técnica. O sistema desenvolvido cumpre todos os requisitos propostos, sendo facilmente extensível e adaptável a novas funcionalidades.
-
-\section{Trabalho Futuro}
+\section{Limitações Identificadas}
 \begin{itemize}
-    \item Implementação de interface gráfica.
-    \item Integração com base de dados relacional.
-    \item Exportação de relatórios em formatos PDF/Excel.
-    \item Otimização de algoritmos para grandes volumes de dados.
+    \item O sistema depende da correta formatação dos ficheiros de dados.
+    \item Não existe interface gráfica, o que pode limitar a usabilidade para alguns utilizadores.
+    \item A gestão de permissões ainda é básica e pode ser melhorada.
 \end{itemize}
 
+
+% ---------- ANEXOS ----------
 \chapter{Anexos}
 \section{Estruturas de Dados}
 \begin{verbatim}
@@ -139,5 +160,54 @@ typedef struct {
 
 \section{Documentação Automática}
 A documentação técnica detalhada do código-fonte foi gerada automaticamente com Doxygen e encontra-se disponível na pasta \texttt{doc}.
+
+% ---------- TABELAS E IMAGENS DE RESULTADOS ----------
+\chapter{Tabelas e Imagens de Resultados}
+
+\section{Exemplo de Tabela Semanal Detalhada}
+No âmbito do sistema desenvolvido, são geradas tabelas semanais detalhadas para cada funcionário, permitindo uma análise clara das escolhas alimentares e respetivas calorias.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.95\textwidth]{c:/Users/vitor/Desktop/Tabela_1.jpg}
+\caption[Exemplo de tabela semanal detalhada gerada pelo sistema para um funcionário.]{Exemplo de tabela semanal detalhada gerada pelo sistema para um funcionário.}
+    \label{fig:tabela-detalhada}
+\end{figure}
+
+Estas tabelas são úteis para análise nutricional, auditoria de consumo e acompanhamento individualizado dos utentes e funcionários.
+
+
+
+\section{Exemplo de Menu do Sistema}
+O sistema apresenta um menu textual intuitivo para interação com o utilizador, facilitando a navegação entre as diferentes funcionalidades. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{c:/Users/vitor/Desktop/tabela_2.jpg}
+    \caption[Exemplo do menu principal do sistema de gestão do espaço social.]{Exemplo do menu principal do sistema de gestão do espaço social.}
+    \label{fig:menu-principal}
+\end{figure}
+O menu permite aceder rapidamente às principais operações do sistema.
+
+
+\section{Exemplo de Listagem de Funcionários}
+O sistema permite também a visualização dos funcionários carregados, apresentando os dados de forma tabular e clara.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{c:/Users/vitor/Desktop/tabela_3.jpg}
+    \caption[Exemplo de listagem dos funcionários carregados no sistema.]{Exemplo de listagem dos funcionários carregados no sistema.}
+    \label{fig:listagem-funcionarios}
+\end{figure}
+Esta listagem facilita a verificação dos dados importados e a consulta rápida dos funcionários registados.
+
+% ---------- CONCLUSÃO ----------
+\chapter{Conclusão}
+O projeto permitiu consolidar conhecimentos de programação em C, gestão de memória, estruturas de dados dinâmicas e documentação técnica. O sistema desenvolvido cumpre todos os requisitos propostos, sendo facilmente extensível e adaptável a novas funcionalidades.
+
+\section{Trabalho Futuro}
+\begin{itemize}
+    \item Implementação de interface gráfica.
+    \item Integração com base de dados relacional.
+    \item Exportação de relatórios em formatos PDF/Excel.
+    \item Otimização de algoritmos para grandes volumes de dados.
+\end{itemize}
 
 \end{document}
